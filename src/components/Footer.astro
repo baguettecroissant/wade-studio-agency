@@ -1,0 +1,78 @@
+---
+// Footer Component
+import { Heart } from '@lucide/astro';
+---
+
+<footer class="border-t border-slate-200 bg-slate-50 py-12 lg:py-16 relative">
+  <!-- Background lights removed for clean editorial style -->
+  
+  <div class="container mx-auto max-w-7xl px-6 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
+      
+      <!-- Brand column -->
+      <div class="md:col-span-2 space-y-4">
+        <a href="/" class="flex items-center space-x-2">
+          <img src="/images/wade_studio_logo.png" alt="Wade Studio Logo" class="h-9 w-auto" />
+        </a>
+        <p class="font-sans text-xs text-text-secondary leading-relaxed max-w-sm mt-3">
+          Nous concevons des infrastructures d'acquisition exclusives pour les professionnels du bâtiment et de l'énergie. Augmentez votre taux de signature, éliminez la concurrence.
+        </p>
+      </div>
+
+      <!-- Links column 1 -->
+      <div>
+        <h4 class="font-heading text-xs font-bold text-slate-900 uppercase tracking-wider mb-4">Navigation</h4>
+        <ul class="space-y-2.5 text-xs text-text-secondary">
+          <li>
+            <a href="#comparison" class="hover:text-slate-900 transition-colors duration-150">Le Problème</a>
+          </li>
+          <li>
+            <a href="#system" class="hover:text-slate-900 transition-colors duration-150">Notre Système</a>
+          </li>
+          <li>
+            <a href="#roi-simulator" class="hover:text-slate-900 transition-colors duration-150">Simulateur ROI</a>
+          </li>
+          <li>
+            <a href="#case-studies" class="hover:text-slate-900 transition-colors duration-150">Résultats réels</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Links column 2: Legal -->
+      <div>
+        <h4 class="font-heading text-xs font-bold text-slate-900 uppercase tracking-wider mb-4">Légal & Exclusivité</h4>
+        <ul class="space-y-2.5 text-xs text-text-secondary">
+          <li>
+            <a href="#availability-checker" class="hover:text-slate-900 transition-colors duration-150">Candidature Exclusivité</a>
+          </li>
+          <li>
+            <a href="/mentions-legales" class="hover:text-slate-900 transition-colors duration-150">Mentions Légales</a>
+          </li>
+          <li>
+            <a href="/confidentialite" class="hover:text-slate-900 transition-colors duration-150">Politique de Confidentialité</a>
+          </li>
+          <li>
+            <a href="/conditions" class="hover:text-slate-900 transition-colors duration-150">Conditions Générales (CGV)</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-slate-200 my-10"></div>
+
+    <!-- Bottom info -->
+    <div class="flex flex-col sm:flex-row items-center justify-between text-[11px] text-text-secondary space-y-4 sm:space-y-0">
+      <div>
+        © 2026 Wade Studio. Tous droits réservés. Conçu pour les artisans ambitieux.
+      </div>
+      <div class="flex items-center space-x-1 font-mono">
+        <span>Made with</span>
+        <Heart class="h-3 w-3 text-red-500 fill-red-500 animate-pulse" />
+        <span>for Premium Contractors.</span>
+      </div>
+    </div>
+
+  </div>
+</footer>

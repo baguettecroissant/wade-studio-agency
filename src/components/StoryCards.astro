@@ -1,0 +1,171 @@
+---
+// StoryCards component
+import { Home, Sun, Flame, Hammer, ArrowRight } from '@lucide/astro';
+
+const stories = [
+  {
+    id: 'toiture',
+    niche: 'Toiture & Couverture',
+    location: 'Réseau Var (83)',
+    leadsToday: '+4 chantiers aujourd\'hui',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-roofer-installing-metal-sheets-on-roof-41559-large.mp4',
+    poster: '/images/artisan_couvreur.png',
+    icon: Home,
+    color: 'from-primary-neon to-accent-orange'
+  },
+  {
+    id: 'solaire',
+    niche: 'Solaire Photovoltaïque',
+    location: 'Réseau Gironde (33)',
+    leadsToday: '+7 chantiers aujourd\'hui',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-worker-installing-solar-panels-on-a-roof-41561-large.mp4',
+    poster: '/images/artisan_solaire.png',
+    icon: Sun,
+    color: 'from-amber-500 to-primary-neon'
+  },
+  {
+    id: 'pac',
+    niche: 'Pompe à Chaleur (PAC)',
+    location: 'Réseau Rhône (69)',
+    leadsToday: '+5 chantiers aujourd\'hui',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-plumber-soldering-copper-pipes-41564-large.mp4',
+    poster: '/images/artisan_chauffagiste.png',
+    icon: Flame,
+    color: 'from-accent-violet to-secondary-neon'
+  },
+  {
+    id: 'renovation',
+    niche: 'Rénovation Globale',
+    location: 'Réseau Alpes-Maritimes (06)',
+    leadsToday: '+3 chantiers aujourd\'hui',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-interior-designer-decorating-a-room-41563-large.mp4',
+    poster: '/images/artisan_renovation.png',
+    icon: Hammer,
+    color: 'from-primary-neon to-accent-violet'
+  }
+];
+---
+
+<section id="stories" class="py-20 lg:py-32 relative overflow-hidden bg-white">
+  <!-- Background lights removed for clean editorial style -->
+
+  <div class="container mx-auto max-w-7xl px-6 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+      <span class="font-mono text-xs font-semibold text-primary-neon uppercase tracking-widest bg-primary-neon/5 border border-primary-neon/15 px-3.5 py-1.5 rounded-full">
+        Chantiers en Action
+      </span>
+      <h2 class="font-heading text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl mt-6">
+        Nos réseaux locaux <span class="gradient-text-editorial">capturent des demandes</span> en direct
+      </h2>
+      <p class="font-sans text-base lg:text-lg text-text-secondary mt-6 leading-relaxed">
+        Visualisez comment nos portails thématiques captent les demandes des particuliers. Cliquez sur votre spécialité pour réserver le monopole de votre zone.
+      </p>
+    </div>
+
+    <!-- Stories Grid Container (horizontal scroll on mobile, 4 cols on desktop) -->
+    <div class="flex overflow-x-auto pb-8 lg:pb-0 gap-6 snap-x snap-mandatory lg:grid lg:grid-cols-4 lg:overflow-x-visible scrollbar-hide">
+      
+      {stories.map(s => {
+        const IconComp = s.icon;
+        return (
+          <a 
+            href="#availability-checker" 
+            class="flex-shrink-0 w-[280px] h-[480px] sm:w-[300px] lg:w-auto rounded-3xl overflow-hidden relative snap-start group shadow-lg hover:shadow-2xl hover:shadow-indigo-500/10 border border-slate-200/60 transition-all duration-300 block bg-slate-950"
+          >
+            <!-- HTML5 Autoplay Loop video with photorealistic cover poster -->
+            <video 
+              autoplay 
+              loop 
+              muted 
+              playsinline 
+              poster={s.poster}
+              class="absolute inset-0 w-full h-full object-cover opacity-85 transition-transform duration-700 group-hover:scale-105"
+            >
+              <source src={s.videoUrl} type="video/mp4" />
+            </video>
+
+            <!-- Dark gradient overlays for readability -->
+            <div class="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/60 to-transparent pointer-events-none"></div>
+            <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/85 via-black/40 to-transparent pointer-events-none"></div>
+
+            <!-- Top Stories Progress Bars and Live Badge -->
+            <div class="absolute inset-x-0 top-4 px-4 z-20">
+              <div class="flex space-x-1.5 mb-4">
+                <div class="h-1 flex-1 bg-white rounded-full"></div>
+                <div class="h-1 flex-1 bg-white/30 rounded-full"></div>
+                <div class="h-1 flex-1 bg-white/30 rounded-full"></div>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <div class="h-8 w-8 rounded-full bg-primary-neon flex items-center justify-center text-white font-bold text-xs select-none">
+                    W
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-[11px] font-bold text-white tracking-wide">Réseau Wade</span>
+                    <span class="text-[9px] text-white/70">Il y a 5 min</span>
+                  </div>
+                </div>
+                <span class="inline-flex items-center space-x-1 bg-red-600 px-2 py-0.5 rounded-full text-[9px] font-mono font-black text-white uppercase tracking-wider animate-pulse shadow-md">
+                  <span class="h-1.5 w-1.5 rounded-full bg-white animate-ping"></span>
+                  <span>LIVE FEED</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Bottom Story Description & Niche Badge -->
+            <div class="absolute inset-x-0 bottom-4 px-5 z-20 flex flex-col justify-end text-white">
+              
+              <!-- Niche Icon & Badge -->
+              <div class="flex items-center space-x-2 mb-3">
+                <div class={`h-8 w-8 rounded-lg bg-gradient-to-br ${s.color} flex items-center justify-center text-white shrink-0 shadow-md`}>
+                  <IconComp class="h-4.5 w-4.5" />
+                </div>
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-accent-violet">{s.niche}</span>
+              </div>
+
+              <!-- Main Card Information -->
+              <h3 class="font-heading text-lg font-bold text-white tracking-tight leading-snug">
+                {s.location}
+              </h3>
+              
+              <!-- Active leads status indicator -->
+              <p class="text-xs text-slate-200 mt-1 flex items-center space-x-1.5">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success-green opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-success-green"></span>
+                </span>
+                <span>{s.leadsToday}</span>
+              </p>
+
+              <!-- Footer CTA -->
+              <div class="mt-4 flex items-center justify-between border-t border-white/10 pt-3 text-xs text-white/90">
+                <span class="font-mono text-[9px] text-accent-violet uppercase font-bold tracking-wider">Monopole Libre</span>
+                <span class="flex items-center text-white font-semibold group-hover:translate-x-1.5 transition-transform duration-200">
+                  Candidater <ArrowRight class="h-3 w-3 ml-1" />
+                </span>
+              </div>
+              
+            </div>
+
+          </a>
+        );
+      })}
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Custom scrollbar hiding utility */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+</style>

@@ -26,3 +26,8 @@ pnpm-debug.log*
 # local npm cache
 npm-cache/
 
+# Cloudflare Wrangler cache
+.wrangler/
+
+# local test screenshots
+screenshot_*.png

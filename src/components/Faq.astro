@@ -1,0 +1,136 @@
+---
+// Faq component
+import { Plus, HelpCircle } from '@lucide/astro';
+
+const faqs = [
+  {
+    question: "Comment garantissez-vous l’exclusivité des demandes ?",
+    answer: "Chaque code postal ou département est attribué à un partenaire unique pour une activité donnée. Dès qu'un particulier valide son projet de devis sur notre portail thématique local, la fiche vous est envoyée instantanément par SMS et e-mail. Aucun autre artisan ne la reçoit. Votre monopole local est garanti contractuellement."
+  },
+  {
+    question: "D'où proviennent ces leads de chantiers ?",
+    answer: "Nous développons et gérons notre propre réseau de portails thématiques. Ces sites sont positionnés en première page de Google grâce à un référencement naturel local (SEO) intensif. Ce ne sont pas des publicités éphémères, mais du trafic organique de particuliers cherchant activement un artisan qualifié."
+  },
+  {
+    question: "Comment fonctionne la tarification (CPL vs Rank & Rent) ?",
+    answer: "Pour sécuriser votre investissement, nous fonctionnons avec une formule hybride : vous débutez avec un paiement au lead (CPL - Coût Par Lead) pour tester la qualité et le volume. Une fois que la collaboration est validée et le flux de leads régulier, nous basculons sur un forfait mensuel fixe de location de site (Rank & Rent). Cela vous permet de budgétiser vos coûts publicitaires et de bénéficier de toutes les demandes supplémentaires gratuitement."
+  },
+  {
+    question: "Que se passe-t-il si un numéro de téléphone est invalide ?",
+    answer: "Notre algorithme vérifie automatiquement la validité de chaque numéro de téléphone par validation SMS avant transmission. Si malgré cela, vous recevez un lead contenant un faux numéro, un projet hors secteur ou un doublon, il vous suffit de le signaler depuis votre espace partenaire pour obtenir un remplacement gratuit sous 24h. Vous ne payez que pour de réelles opportunités."
+  },
+  {
+    question: "Combien de temps faut-il pour recevoir mes premiers leads ?",
+    answer: "Si nos portails locaux sont déjà actifs et libres dans votre département, la mise en service prend moins de 48 heures (le temps de configurer vos notifications SMS et E-mail). Si nous devons déployer de nouveaux portails sur votre secteur, comptez 2 à 3 semaines pour que nos optimisations SEO locales commencent à générer des demandes."
+  },
+  {
+    question: "Y a-t-il un engagement de durée ?",
+    answer: "Absolument pas. Wade Studio fonctionne sans engagement de longue durée. Que vous soyez en tarification au lead (CPL) ou en forfait de location mensuel (Rank & Rent), vous êtes libre d'interrompre le partenariat à tout moment avec un simple préavis de 15 jours. Notre objectif est de vous garder grâce à vos résultats, pas grâce à un contrat."
+  }
+];
+---
+
+<section id="faq" class="py-20 lg:py-32 bg-[#FBF9F6]/50 border-t border-slate-100 relative font-sans">
+  <div class="container mx-auto max-w-4xl px-6 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
+      <span class="font-mono text-[10px] font-semibold text-primary-neon uppercase tracking-wider bg-primary-neon/5 border border-primary-neon/10 px-3 py-1 rounded-full">
+        FAQ & Transparence
+      </span>
+      <h2 class="font-heading text-3xl font-normal text-slate-900 sm:text-4xl lg:text-5xl mt-6">
+        Questions fréquentes et <span class="gradient-text-editorial">modèle de partenariat</span>
+      </h2>
+      <p class="font-sans text-base lg:text-lg text-text-secondary mt-6 leading-relaxed">
+        Vous avez des questions sur l'exclusivité, le fonctionnement ou la facturation ? Découvrez nos réponses transparentes.
+      </p>
+    </div>
+
+    <!-- FAQ Accordion Container -->
+    <div class="glass-card-neon rounded-3xl border border-slate-200/60 p-6 md:p-10 shadow-sm bg-white">
+      <div class="divide-y divide-slate-100">
+        {faqs.map((faq, idx) => (
+          <div class="faq-item py-6 first:pt-0 last:pb-0 group">
+            <button 
+              class="faq-trigger w-full flex items-center justify-between text-left focus:outline-none cursor-pointer"
+              aria-expanded="false"
+              aria-controls={`faq-answer-${idx}`}
+            >
+              <span class="font-heading font-normal text-slate-900 text-base md:text-lg group-hover:text-primary-neon transition-colors duration-200 pr-4 flex items-start">
+                <HelpCircle class="h-5 w-5 text-accent-violet mr-3 mt-1 shrink-0 transition-transform duration-300 group-hover:scale-105" />
+                <span>{faq.question}</span>
+              </span>
+              <span class="faq-icon h-7 w-7 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 transition-all duration-300 shrink-0 group-hover:border-primary-neon/20 group-hover:bg-primary-neon/5 group-hover:text-primary-neon">
+                <Plus class="h-4 w-4 transition-transform duration-300" />
+              </span>
+            </button>
+            <div 
+              id={`faq-answer-${idx}`}
+              class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+              style="max-height: 0px;"
+            >
+              <div class="pl-8 pt-3 pb-2">
+                <p class="font-sans text-sm md:text-base text-text-secondary leading-relaxed max-w-3xl">
+                  {faq.answer}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- FAQ CTA -->
+    <div class="text-center mt-12">
+      <p class="font-sans text-sm text-text-secondary">
+        Une autre question ? Nos conseillers vous répondent en direct. 
+        <a href="#availability-checker" class="text-primary-neon font-bold hover:underline ml-1">
+          Vérifier votre éligibilité →
+        </a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function setupFaq() {
+    const triggers = document.querySelectorAll('.faq-trigger');
+    
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const content = trigger.nextElementSibling as HTMLElement;
+        const icon = trigger.querySelector('.faq-icon svg') as HTMLElement;
+        const isCurrentlyExpanded = trigger.getAttribute('aria-expanded') === 'true';
+
+        // Close all other open FAQ items for a clean accordion experience
+        document.querySelectorAll('.faq-trigger').forEach(otherTrigger => {
+          if (otherTrigger !== trigger) {
+            otherTrigger.setAttribute('aria-expanded', 'false');
+            const otherContent = otherTrigger.nextElementSibling as HTMLElement;
+            if (otherContent) otherContent.style.maxHeight = '0px';
+            const otherIcon = otherTrigger.querySelector('.faq-icon svg') as HTMLElement;
+            if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+          }
+        });
+
+        // Toggle current item
+        if (isCurrentlyExpanded) {
+          trigger.setAttribute('aria-expanded', 'false');
+          if (content) content.style.maxHeight = '0px';
+          if (icon) icon.style.transform = 'rotate(0deg)';
+        } else {
+          trigger.setAttribute('aria-expanded', 'true');
+          if (content) content.style.maxHeight = `${content.scrollHeight}px`;
+          if (icon) icon.style.transform = 'rotate(45deg)';
+        }
+      });
+    });
+  }
+
+  // Run on initial load
+  setupFaq();
+
+  // Run on page navigation (Astro view transitions support if enabled)
+  document.addEventListener('astro:page-load', setupFaq);
+</script>

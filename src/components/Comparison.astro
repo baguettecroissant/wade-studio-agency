@@ -1,0 +1,155 @@
+---
+// Comparison component
+import { X, Zap, Scale, HeartHandshake, Eye, TrendingUp, AlertCircle, Sparkles } from '@lucide/astro';
+---
+
+<section id="comparison" class="py-20 lg:py-32 relative">
+  <!-- Background lights removed for clean editorial style -->
+  
+  <div class="container mx-auto max-w-7xl px-6 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-20 lg:mb-24">
+      <span class="font-mono text-xs font-semibold text-primary-neon uppercase tracking-widest bg-primary-neon/5 border border-primary-neon/15 px-3.5 py-1.5 rounded-full">
+        La Confrontation
+      </span>
+      <h2 class="font-heading text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl mt-6 leading-tight">
+        Pourquoi les plateformes classiques <span class="gradient-text-editorial">tuent votre rentabilité</span>
+      </h2>
+      <p class="font-sans text-base lg:text-lg text-text-secondary mt-6 leading-relaxed">
+        Acheter des leads partagés vous force à brader vos prix et à travailler sans marge. Découvrez le modèle qui redonne le pouvoir aux artisans.
+      </p>
+    </div>
+
+    <!-- Side-by-Side Comparison Layout -->
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 max-w-5xl mx-auto">
+      
+      <!-- Card 1: Standard Platforms (The "Old / Bad" Way) -->
+      <div class="bg-white border border-slate-200/60 rounded-3xl p-8 opacity-95 hover:border-red-500/20 transition-all duration-300 flex flex-col justify-between relative overflow-hidden shadow-md shadow-slate-100">
+        
+        <!-- Header -->
+        <div>
+          <div class="flex items-center justify-between border-b border-slate-100 pb-5 mb-6">
+            <div>
+              <h3 class="font-heading text-xl font-bold text-slate-900">Plateformes Traditionnelles</h3>
+              <p class="text-xs text-text-secondary mt-1">Ex: Travaux.com, ViteUnDevis...</p>
+            </div>
+            <span class="text-red-600 font-bold bg-red-500/10 border border-red-500/20 px-3.5 py-1.5 rounded-full text-xs font-mono tracking-wider uppercase flex items-center space-x-1.5">
+              <AlertCircle class="h-3.5 w-3.5 text-red-600" />
+              <span>Leads Partagés ❌</span>
+            </span>
+          </div>
+          
+          <!-- Features list -->
+          <ul class="space-y-6">
+            <li class="flex items-start space-x-4">
+              <div class="h-9 w-9 rounded-xl bg-red-500/10 border border-red-500/25 flex items-center justify-center text-red-600 shrink-0 mt-0.5">
+                <Scale class="h-5 w-5" />
+              </div>
+              <div>
+                <strong class="font-heading text-sm text-slate-800 font-bold">Concurrence acharnée</strong>
+                <span class="text-xs text-text-secondary mt-1 block leading-relaxed">Le même lead est vendu instantanément à <strong class="text-slate-900">3 à 5 artisans</strong> dans votre secteur.</span>
+              </div>
+            </li>
+            <li class="flex items-start space-x-4">
+              <div class="h-9 w-9 rounded-xl bg-red-500/10 border border-red-500/25 flex items-center justify-center text-red-600 shrink-0 mt-0.5">
+                <TrendingUp class="h-5 w-5" />
+              </div>
+              <div>
+                <strong class="font-heading text-sm text-slate-800 font-bold">Guerre des prix destructrice</strong>
+                <span class="text-xs text-text-secondary mt-1 block leading-relaxed">Obligation de casser vos tarifs et de brader vos marges pour espérer remporter le contrat face aux autres.</span>
+              </div>
+            </li>
+            <li class="flex items-start space-x-4">
+              <div class="h-9 w-9 rounded-xl bg-red-500/10 border border-red-500/25 flex items-center justify-center text-red-600 shrink-0 mt-0.5">
+                <HeartHandshake class="h-5 w-5" />
+              </div>
+              <div>
+                <strong class="font-heading text-sm text-slate-800 font-bold">Client harcelé & méfiant</strong>
+                <span class="text-xs text-text-secondary mt-1 block leading-relaxed">Le client reçoit 5 appels de démarcheurs en 5 minutes. Il est agacé et raccroche au nez.</span>
+              </div>
+            </li>
+            <li class="flex items-start space-x-4">
+              <div class="h-9 w-9 rounded-xl bg-red-500/10 border border-red-500/25 flex items-center justify-center text-red-600 shrink-0 mt-0.5">
+                <Eye class="h-5 w-5" />
+              </div>
+              <div>
+                <strong class="font-heading text-sm text-slate-800 font-bold">Taux de signature médiocre</strong>
+                <span class="text-xs text-text-secondary mt-1 block leading-relaxed">Seulement <strong class="text-slate-900">10% à 15%</strong> de conversion. Vous passez votre temps à faire des devis inutiles.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="mt-8 pt-5 border-t border-slate-100 text-center font-mono text-[10px] text-red-500">
+          * Perte moyenne de 80% du temps commercial
+        </div>
+      </div>
+
+      <!-- Card 2: Wade Studio (The "New / Excellent" Way) -->
+      <div class="rounded-3xl p-8 bg-gradient-to-br from-[#0B3C2E] to-[#1C1917] text-white shadow-md relative overflow-hidden transition-all duration-300 hover:scale-[1.01] group">
+        
+        <!-- Header -->
+        <div>
+          <div class="flex items-center justify-between border-b border-white/15 pb-5 mb-6">
+            <div>
+              <h3 class="font-heading text-xl font-bold text-white">L'Exclusivité Wade Studio</h3>
+              <p class="text-xs text-stone-300 mt-1 font-bold">Monopole total sur votre zone</p>
+            </div>
+            <span class="text-white font-bold bg-accent-violet px-3.5 py-1.5 rounded-full text-[10px] font-mono tracking-wider uppercase flex items-center space-x-1.5 shadow-sm">
+              <Zap class="h-3.5 w-3.5 text-white" />
+              <span>100% Exclusif ⚡</span>
+            </span>
+          </div>
+          
+          <!-- Features list -->
+          <ul class="space-y-6">
+            <li class="flex items-start space-x-4">
+              <div class="h-9 w-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white shrink-0 mt-0.5 group-hover:scale-105 transition-transform duration-200">
+                <Scale class="h-5 w-5" />
+              </div>
+              <div>
+                <strong class="font-heading text-sm text-white font-bold">Artisan unique sur le secteur</strong>
+                <span class="text-xs text-stone-200/90 mt-1 block leading-relaxed"><strong class="text-white">Zéro concurrence</strong>. La demande vous est réservée et envoyée à vous, et uniquement à vous.</span>
+              </div>
+            </li>
+            <li class="flex items-start space-x-4">
+              <div class="h-9 w-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white shrink-0 mt-0.5 group-hover:scale-105 transition-transform duration-200">
+                <TrendingUp class="h-5 w-5" />
+              </div>
+              <div>
+                <strong class="font-heading text-sm text-white font-bold">Tarifs et marges préservés</strong>
+                <span class="text-xs text-stone-200/90 mt-1 block leading-relaxed">Vous fixez vos prix habituels. Le client n'a <strong class="text-white">que votre devis</strong> sous les yeux, ce qui élimine la pression tarifaire.</span>
+              </div>
+            </li>
+            <li class="flex items-start space-x-4">
+              <div class="h-9 w-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white shrink-0 mt-0.5 group-hover:scale-105 transition-transform duration-200">
+                <HeartHandshake class="h-5 w-5" />
+              </div>
+              <div>
+                <strong class="font-heading text-sm text-white font-bold">Relation de confiance premium</strong>
+                <span class="text-xs text-stone-200/90 mt-1 block leading-relaxed">Le lead est pré-qualifié. Vous rappelez le client à votre rythme. La conversation est calme et professionnelle.</span>
+              </div>
+            </li>
+            <li class="flex items-start space-x-4">
+              <div class="h-9 w-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white shrink-0 mt-0.5 group-hover:scale-105 transition-transform duration-200">
+                <Eye class="h-5 w-5" />
+              </div>
+              <div>
+                <strong class="font-heading text-sm text-white font-bold">Taux de signature optimal</strong>
+                <span class="text-xs text-stone-200/90 mt-1 block leading-relaxed">En moyenne <strong class="text-accent-violet font-bold text-sm">40% à 60%</strong> de signature. Plus de temps sur les chantiers, moins dans les papiers.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="mt-8 pt-5 border-t border-white/15 text-center font-mono text-[10px] text-stone-300 flex items-center justify-center space-x-1.5">
+          <Sparkles class="h-3.5 w-3.5 text-stone-300" />
+          <span>Rentabilité commerciale multipliée par 4</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

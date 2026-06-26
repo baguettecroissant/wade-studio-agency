@@ -1,0 +1,117 @@
+---
+// System component
+import { Search, ShieldAlert, Send, Zap } from '@lucide/astro';
+---
+
+<section id="system" class="py-20 lg:py-32 bg-slate-50/50 border-y border-slate-100 relative">
+  <!-- Decorative background lights removed for clean editorial style -->
+  
+  <div class="container mx-auto max-w-7xl px-6 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-20 lg:mb-28">
+      <span class="font-mono text-xs font-semibold text-primary-neon uppercase tracking-widest bg-primary-neon/5 border border-primary-neon/15 px-3.5 py-1.5 rounded-full">
+        Le Processus Wade
+      </span>
+      <h2 class="font-heading text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl mt-6">
+        Un système en 3 étapes pour <span class="gradient-text-editorial">inonder votre planning</span>
+      </h2>
+      <p class="font-sans text-base lg:text-lg text-text-secondary mt-6 leading-relaxed">
+        Nous gérons toute l'infrastructure technique, le référencement et la qualification. Vous recevez simplement des demandes prêtes à signer.
+      </p>
+    </div>
+
+    <!-- 3-Step Stepper Grid -->
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-3 relative">
+      
+      <!-- Connecting line for desktop (glowing gradient line) -->
+      <div class="hidden lg:block absolute top-[60px] left-[15%] right-[15%] h-[1px] bg-accent-violet/20 -z-10"></div>
+      
+      <div class="flex flex-col items-center lg:items-start text-center lg:text-left group relative">
+        <div class="relative flex h-24 w-24 items-center justify-center rounded-2xl bg-white border border-slate-200 shadow-sm group-hover:border-primary-neon group-hover:shadow-md transition-all duration-300">
+          <div class="absolute -top-3 -right-3 font-mono text-xs font-bold text-white bg-primary-neon border border-primary-neon px-2.5 py-0.5 rounded-md shadow-sm">
+            01
+          </div>
+          <Search class="h-10 w-10 text-primary-neon group-hover:scale-110 transition-transform duration-300" />
+          <!-- Glow effect behind icon removed -->
+        </div>
+        
+        <h3 class="font-heading text-xl font-bold text-slate-900 mt-8 tracking-tight group-hover:text-primary-neon transition-colors duration-200">
+          Étape 1 : Le Réseau Local
+        </h3>
+        <p class="font-sans text-sm text-text-secondary mt-3.5 leading-relaxed max-w-sm">
+          Nous positionnons nos sites thématiques locaux sur la <span class="text-slate-900 font-semibold">première page de Google</span> dans votre secteur géographique pour capter les prospects au moment exact où ils cherchent un artisan.
+        </p>
+        
+        <!-- Step 1 Image Mockup -->
+        <div class="mt-6 w-full rounded-2xl overflow-hidden border border-slate-200/60 shadow-md shadow-slate-100 bg-white/50 p-1.5 transition-all duration-300 group-hover:border-primary-neon/30 group-hover:shadow-lg group-hover:shadow-primary-neon/5">
+          <img src="/images/step1_google_rank.png" alt="Google Search Position 1 Mockup" class="w-full aspect-[4/3] object-cover rounded-xl transition-transform duration-500 group-hover:scale-[1.02]" />
+        </div>
+      </div>
+
+      <div class="flex flex-col items-center lg:items-start text-center lg:text-left group relative">
+        <div class="relative flex h-24 w-24 items-center justify-center rounded-2xl bg-white border border-slate-200 shadow-sm group-hover:border-accent-violet group-hover:shadow-md transition-all duration-300">
+          <div class="absolute -top-3 -right-3 font-mono text-xs font-bold text-white bg-accent-violet border border-accent-violet px-2.5 py-0.5 rounded-md shadow-sm">
+            02
+          </div>
+          <ShieldAlert class="h-10 w-10 text-accent-violet group-hover:scale-110 transition-transform duration-300" />
+          <!-- Glow effect behind icon removed -->
+        </div>
+        
+        <h3 class="font-heading text-xl font-bold text-slate-900 mt-8 tracking-tight group-hover:text-accent-violet transition-colors duration-200">
+          Étape 2 : La Qualification
+        </h3>
+        <p class="font-sans text-sm text-text-secondary mt-3.5 leading-relaxed max-w-sm">
+          Les clients locaux remplissent notre formulaire de devis détaillé. Leurs informations et <span class="text-slate-900 font-semibold">numéros de téléphone sont vérifiés</span> par notre algorithme pour éliminer les faux prospects.
+        </p>
+        
+        <!-- Step 2 Image Mockup -->
+        <div class="mt-6 w-full rounded-2xl overflow-hidden border border-slate-200/60 shadow-md shadow-slate-100 bg-white/50 p-1.5 transition-all duration-300 group-hover:border-accent-violet/30 group-hover:shadow-lg group-hover:shadow-accent-violet/5">
+          <img src="/images/step2_lead_qualification.png" alt="Lead Qualification Dashboard Mockup" class="w-full aspect-[4/3] object-cover rounded-xl transition-transform duration-500 group-hover:scale-[1.02]" />
+        </div>
+      </div>
+
+      <div class="flex flex-col items-center lg:items-start text-center lg:text-left group relative">
+        <div class="relative flex h-24 w-24 items-center justify-center rounded-2xl bg-white border border-slate-200 shadow-sm group-hover:border-secondary-neon group-hover:shadow-md transition-all duration-300">
+          <div class="absolute -top-3 -right-3 font-mono text-xs font-bold text-white bg-secondary-neon border border-secondary-neon px-2.5 py-0.5 rounded-md shadow-sm">
+            03
+          </div>
+          <Send class="h-10 w-10 text-secondary-neon group-hover:scale-110 transition-transform duration-300" />
+          <!-- Glow effect behind icon removed -->
+        </div>
+        
+        <h3 class="font-heading text-xl font-bold text-slate-900 mt-8 tracking-tight group-hover:text-secondary-neon transition-colors duration-200">
+          Étape 3 : La Livraison Flash
+        </h3>
+        <p class="font-sans text-sm text-text-secondary mt-3.5 leading-relaxed max-w-sm">
+          Le lead qualifié vous est envoyé <span class="text-slate-900 font-semibold">instantanément par SMS et E-mail</span>. Vous êtes le seul artisan à le recevoir et vous le recontactez directement, sans concurrence.
+        </p>
+        
+        <!-- Step 3 Image Mockup -->
+        <div class="mt-6 w-full rounded-2xl overflow-hidden border border-slate-200/60 shadow-md shadow-slate-100 bg-white/50 p-1.5 transition-all duration-300 group-hover:border-secondary-neon/30 group-hover:shadow-lg group-hover:shadow-secondary-neon/5">
+          <img src="/images/step3_lead_delivery.png" alt="SMS Lead Notification Mockup" class="w-full aspect-[4/3] object-cover rounded-xl transition-transform duration-500 group-hover:scale-[1.02]" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stepper Bottom Callout (Vibrant Gradient Card) -->
+    <div class="mt-20 lg:mt-24 relative max-w-4xl mx-auto rounded-3xl overflow-hidden p-[1px] bg-accent-violet/20 shadow-md">
+      <div class="bg-white rounded-[23px] p-6 lg:p-8 flex flex-col md:flex-row items-center justify-between">
+        <div class="flex items-center space-x-4 mb-6 md:mb-0">
+          <div class="h-12 w-12 rounded-xl bg-primary-neon flex items-center justify-center text-white shrink-0 shadow-sm">
+            <Zap class="h-6 w-6 text-white" />
+          </div>
+          <div>
+            <h4 class="font-heading font-bold text-slate-900 text-base">Prêt à tester le système Wade Studio ?</h4>
+            <p class="text-xs text-text-secondary mt-0.5">Nous installons votre canal d'acquisition en moins de 48 heures.</p>
+          </div>
+        </div>
+        <a href="#availability-checker" class="inline-flex h-12 items-center justify-center rounded-xl bg-primary-neon hover:bg-primary-neon/90 hover:scale-[1.01] active:scale-[0.99] px-6 text-sm font-bold text-white transition-all duration-200 shadow-md">
+          Voir les secteurs libres →
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>

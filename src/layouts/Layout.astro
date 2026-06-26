@@ -1,23 +1,76 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "Wade Studio | Leads Exclusifs & Directs pour Artisans", 
+	description = "Wade Studio aide les couvreurs, chauffagistes et artisans RGE à obtenir des chantiers exclusifs grâce à des portails locaux de haute conversion. Zéro concurrence."
+} = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="fr" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		
+		<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="robots" content="index, follow" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content="https://wade-studio.com" />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
 	</head>
-	<body>
-		<slot />
+	<body class="bg-bg-dark text-text-primary antialiased relative min-h-screen">
+		<!-- Subtle Editorial Background Grid -->
+		<div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none z-0"></div>
+		
+		<!-- Navigation Bar -->
+		<header class="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-slate-100">
+			<div class="container mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+				<!-- Logo -->
+				<a href="/" class="flex items-center group">
+					<img src="/images/wade_studio_logo.png" alt="Wade Studio Logo" class="h-10 w-auto" />
+				</a>
+
+				<!-- Desktop Menu -->
+				<nav class="hidden md:flex items-center space-x-8">
+					<a href="#comparison" class="font-sans text-xs uppercase tracking-wider font-bold text-text-secondary hover:text-slate-950 transition-colors duration-200 hover:shadow-sm">Le Problème</a>
+					<a href="#system" class="font-sans text-xs uppercase tracking-wider font-bold text-text-secondary hover:text-slate-950 transition-colors duration-200 hover:shadow-sm">Notre Système</a>
+					<a href="#roi-simulator" class="font-sans text-xs uppercase tracking-wider font-bold text-text-secondary hover:text-slate-950 transition-colors duration-200 hover:shadow-sm">Simulateur ROI</a>
+					<a href="#case-studies" class="font-sans text-xs uppercase tracking-wider font-bold text-text-secondary hover:text-slate-950 transition-colors duration-200 hover:shadow-sm">Résultats</a>
+				</nav>
+
+				<!-- CTA -->
+				<div class="flex items-center space-x-4">
+					<a href="#availability-checker" class="inline-flex h-11 items-center justify-center rounded-xl bg-gradient-to-r from-primary-neon to-accent-orange px-6 text-sm font-bold text-white shadow-lg shadow-primary-neon/25 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200">
+						Devenir Exclusif
+					</a>
+				</div>
+			</div>
+			<!-- Thin neon gradient border -->
+			<div class="h-[1px] w-full bg-gradient-to-r from-primary-neon/15 via-accent-violet/15 to-secondary-neon/15"></div>
+		</header>
+
+		<!-- Main Content Slot -->
+		<main class="relative z-10">
+			<slot />
+		</main>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

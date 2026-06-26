@@ -1,0 +1,460 @@
+---
+// AvailabilityForm component
+import { ShieldCheck, ArrowRight, ArrowLeft, Send, CheckCircle2, Lock, Flame, Hammer, Sun, Home } from '@lucide/astro';
+---
+
+<section id="availability-checker" class="py-20 lg:py-32 relative border-t border-slate-100 bg-[#FBF9F6]/50">
+  
+  <div class="container mx-auto max-w-7xl px-6 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+      <span class="font-mono text-[10px] font-semibold text-primary-neon uppercase tracking-wider bg-primary-neon/5 border border-primary-neon/10 px-3 py-1 rounded-full">
+        Vérification en Direct
+      </span>
+      <h2 class="font-heading text-3xl font-normal text-slate-900 sm:text-4xl lg:text-5xl mt-6">
+        Postulez pour <span class="gradient-text-editorial">l'exclusivité</span> de votre secteur
+      </h2>
+      <p class="font-sans text-base lg:text-lg text-text-secondary mt-6 leading-relaxed">
+        Remplissez le formulaire en 3 étapes pour vérifier si votre métier et votre secteur géographique sont encore disponibles.
+      </p>
+    </div>
+
+    <!-- Wizard Form Card Container -->
+    <div class="max-w-xl mx-auto relative">
+      <div class="absolute -inset-[1px] rounded-3xl bg-gradient-to-br from-[#0B3C2E] to-[#9A784E] opacity-10 pointer-events-none"></div>
+      
+      <div class="relative glass-card-neon rounded-3xl p-6 lg:p-10 bg-white border border-slate-200/60 overflow-hidden min-h-[480px] flex flex-col justify-between" id="form-container">
+        
+        <!-- Progress Header -->
+        <div id="form-progress-header" class="mb-8">
+          <div class="flex justify-between items-center text-xs font-mono text-text-secondary uppercase tracking-wider mb-3">
+            <span id="step-label">Étape 1 sur 3</span>
+            <span id="step-percent" class="text-primary-neon font-semibold">33%</span>
+          </div>
+          <!-- Progress Bar -->
+          <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden border border-slate-200/50 shadow-inner">
+            <div id="progress-bar-fill" class="h-full bg-[#0B3C2E] rounded-full transition-all duration-300 w-1/3"></div>
+          </div>
+        </div>
+
+        <!-- Wizard Multi-Step Form Element -->
+        <form id="wizard-form" class="flex-1 flex flex-col justify-between">
+          
+          <!-- STEP 1: Niche Selection -->
+          <div id="step-1-content" class="step-content space-y-6">
+            <h3 class="font-heading text-base font-semibold text-slate-900 mb-4">Sélectionnez votre spécialité principale :</h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Option Toiture -->
+              <label class="relative flex items-center p-4 rounded-xl border border-slate-200 bg-white cursor-pointer hover:border-primary-neon/20 hover:bg-primary-neon/5 transition-all duration-200 select-none group shadow-sm">
+                <input type="radio" name="niche" value="Toiture & Couverture" class="sr-only peer" checked />
+                <!-- Selected border outline -->
+                <div class="absolute inset-0 border border-primary-neon rounded-xl opacity-0 peer-checked:opacity-100 transition-opacity duration-150 pointer-events-none"></div>
+                <div class="h-10 w-10 rounded-lg bg-primary-neon/5 border border-primary-neon/10 flex items-center justify-center text-primary-neon shrink-0 group-hover:scale-105 transition-transform duration-200">
+                  <Home class="h-5 w-5" />
+                </div>
+                <span class="ml-4 font-heading text-sm font-semibold text-text-secondary peer-checked:text-slate-900 group-hover:text-slate-950 transition-colors duration-200">
+                  Toiture & Couverture
+                </span>
+              </label>
+
+              <!-- Option PAC -->
+              <label class="relative flex items-center p-4 rounded-xl border border-slate-200 bg-white cursor-pointer hover:border-accent-violet/20 hover:bg-accent-violet/5 transition-all duration-200 select-none group shadow-sm">
+                <input type="radio" name="niche" value="Pompe à Chaleur" class="sr-only peer" />
+                <div class="absolute inset-0 border border-accent-violet rounded-xl opacity-0 peer-checked:opacity-100 transition-opacity duration-150 pointer-events-none"></div>
+                <div class="h-10 w-10 rounded-lg bg-accent-violet/5 border border-accent-violet/10 flex items-center justify-center text-accent-violet shrink-0 group-hover:scale-105 transition-transform duration-200">
+                  <Flame class="h-5 w-5" />
+                </div>
+                <span class="ml-4 font-heading text-sm font-semibold text-text-secondary peer-checked:text-slate-900 group-hover:text-slate-950 transition-colors duration-200">
+                  Pompe à Chaleur
+                </span>
+              </label>
+
+              <!-- Option Solaire -->
+              <label class="relative flex items-center p-4 rounded-xl border border-slate-200 bg-white cursor-pointer hover:border-primary-neon/20 hover:bg-primary-neon/5 transition-all duration-200 select-none group shadow-sm">
+                <input type="radio" name="niche" value="Solaire Photovoltaïque" class="sr-only peer" />
+                <div class="absolute inset-0 border border-primary-neon rounded-xl opacity-0 peer-checked:opacity-100 transition-opacity duration-150 pointer-events-none"></div>
+                <div class="h-10 w-10 rounded-lg bg-primary-neon/5 border border-primary-neon/10 flex items-center justify-center text-primary-neon shrink-0 group-hover:scale-105 transition-transform duration-200">
+                  <Sun class="h-5 w-5" />
+                </div>
+                <span class="ml-4 font-heading text-sm font-semibold text-text-secondary peer-checked:text-slate-900 group-hover:text-slate-950 transition-colors duration-200">
+                  Solaire Photovoltaïque
+                </span>
+              </label>
+
+              <!-- Option Rénovation -->
+              <label class="relative flex items-center p-4 rounded-xl border border-slate-200 bg-white cursor-pointer hover:border-accent-violet/20 hover:bg-accent-violet/5 transition-all duration-200 select-none group shadow-sm">
+                <input type="radio" name="niche" value="Rénovation Générale" class="sr-only peer" />
+                <div class="absolute inset-0 border border-accent-violet rounded-xl opacity-0 peer-checked:opacity-100 transition-opacity duration-150 pointer-events-none"></div>
+                <div class="h-10 w-10 rounded-lg bg-accent-violet/5 border border-accent-violet/10 flex items-center justify-center text-accent-violet shrink-0 group-hover:scale-105 transition-transform duration-200">
+                  <Hammer class="h-5 w-5" />
+                </div>
+                <span class="ml-4 font-heading text-sm font-semibold text-text-secondary peer-checked:text-slate-900 group-hover:text-slate-950 transition-colors duration-200">
+                  Rénovation Générale
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- STEP 2: Zip Code / Department -->
+          <div id="step-2-content" class="step-content space-y-6 hidden">
+            <h3 class="font-heading text-base font-semibold text-slate-900 mb-2">Secteur d'exclusivité demandé :</h3>
+            <p class="text-xs text-text-secondary leading-normal">
+              Veuillez saisir votre département (ex: 06, 33) ou votre code postal principal (ex: 75008). Nous vérifions si un partenaire est déjà actif.
+            </p>
+            
+            <div class="flex flex-col relative mt-4">
+              <label for="form-zip" class="sr-only">Code Postal ou Département</label>
+              <input 
+                type="text" 
+                id="form-zip" 
+                placeholder="Ex: 06 ou 33000" 
+                maxlength="5"
+                class="block w-full rounded-xl bg-white border border-slate-200 px-5 py-4 text-base font-semibold text-slate-800 tracking-wider placeholder-slate-400 focus:border-primary-neon focus:ring-1 focus:ring-primary-neon focus:outline-none transition-all duration-200 shadow-sm" 
+              />
+              <span class="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-mono text-text-secondary" id="zip-char-count">0/5</span>
+            </div>
+            
+            <div id="zip-error" class="hidden text-xs font-semibold text-red-500 mt-2 flex items-center space-x-1.5">
+              <span>⚠️ Le code postal doit comporter 2 ou 5 chiffres.</span>
+            </div>
+          </div>
+
+          <!-- STEP 3: Coordonnées -->
+          <div id="step-3-content" class="step-content space-y-4 hidden">
+            <h3 class="font-heading text-base font-semibold text-slate-900 mb-2">Vos coordonnées professionnelles :</h3>
+            <p class="text-xs text-text-secondary mb-4 leading-normal">
+              Vos informations nous permettent de valider votre statut d'artisan et de vous envoyer les résultats du test de disponibilité.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="form-company" class="block font-heading text-xs font-bold text-slate-650 uppercase tracking-wider mb-2">Nom de l'entreprise</label>
+                <input 
+                  type="text" 
+                  id="form-company" 
+                  placeholder="Ex: Martin Couverture" 
+                  class="block w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-800 focus:border-primary-neon focus:ring-1 focus:ring-primary-neon focus:outline-none transition-all duration-200 shadow-sm" 
+                />
+              </div>
+              <div>
+                <label for="form-owner" class="block font-heading text-xs font-bold text-slate-650 uppercase tracking-wider mb-2">Nom du responsable</label>
+                <input 
+                  type="text" 
+                  id="form-owner" 
+                  placeholder="Ex: Jean Martin" 
+                  class="block w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-800 focus:border-primary-neon focus:ring-1 focus:ring-primary-neon focus:outline-none transition-all duration-200 shadow-sm" 
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="form-phone" class="block font-heading text-xs font-bold text-slate-650 uppercase tracking-wider mb-2">Téléphone professionnel</label>
+                <input 
+                  type="tel" 
+                  id="form-phone" 
+                  placeholder="Ex: 06 12 34 56 78" 
+                  class="block w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-800 focus:border-primary-neon focus:ring-1 focus:ring-primary-neon focus:outline-none transition-all duration-200 shadow-sm" 
+                />
+              </div>
+              <div>
+                <label for="form-email" class="block font-heading text-xs font-bold text-slate-650 uppercase tracking-wider mb-2">Adresse E-mail</label>
+                <input 
+                  type="email" 
+                  id="form-email" 
+                  placeholder="Ex: contact@entreprise.fr" 
+                  class="block w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-800 focus:border-primary-neon focus:ring-1 focus:ring-primary-neon focus:outline-none transition-all duration-200 shadow-sm" 
+                />
+              </div>
+            </div>
+            
+            <div id="credentials-error" class="hidden text-xs font-semibold text-red-500 mt-2">
+              <span>⚠️ Veuillez remplir tous les champs correctement (téléphone et email valides).</span>
+            </div>
+          </div>
+
+          <!-- Bottom Buttons Navigation -->
+          <div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
+            <button 
+              type="button" 
+              id="btn-back" 
+              class="hidden inline-flex items-center space-x-2 font-sans text-sm font-semibold text-text-secondary hover:text-slate-950 transition-colors duration-200"
+            >
+              <ArrowLeft class="h-4 w-4" />
+              <span>Retour</span>
+            </button>
+            <span class="flex-1" id="btn-back-spacer"></span>
+
+            <button 
+              type="button" 
+              id="btn-next" 
+              class="inline-flex h-12 items-center justify-center rounded-xl bg-primary-neon px-6 text-sm font-medium text-white transition-colors duration-150 hover:bg-primary-neon/90"
+            >
+              <span>Continuer</span>
+              <ArrowRight class="ml-2 h-4 w-4" />
+            </button>
+
+            <button 
+              type="submit" 
+              id="btn-submit" 
+              class="hidden inline-flex h-12 items-center justify-center rounded-xl bg-primary-neon px-6 text-sm font-semibold text-white transition-colors duration-150 hover:bg-primary-neon/90"
+            >
+              <span>Vérifier la disponibilité</span>
+              <Send class="ml-2 h-4 w-4" />
+            </button>
+          </div>
+
+        </form>
+
+        <!-- STEP SUCCESS: Final Screen -->
+        <div id="step-success-content" class="hidden flex-1 flex flex-col items-center justify-center text-center py-6 space-y-6">
+          <div class="h-20 w-20 rounded-full bg-success-green/5 border border-success-green flex items-center justify-center text-success-green shadow-sm">
+            <CheckCircle2 class="h-12 w-12" />
+          </div>
+          
+          <div class="space-y-2.5">
+            <h3 class="font-heading text-2xl font-normal text-slate-900">Demande enregistrée !</h3>
+            <p class="font-sans text-sm text-primary-neon font-semibold">Votre secteur est temporairement bloqué.</p>
+            <p class="font-sans text-xs text-text-secondary leading-relaxed max-w-sm mx-auto mt-2">
+              Notre équipe analyse l'état du référencement et la concurrence dans votre zone (<strong class="text-slate-900" id="success-zip">00000</strong>) pour la thématique <strong class="text-slate-900" id="success-niche">Toiture</strong>. Un conseiller vous recontactera sous 2 heures pour valider votre exclusivité.
+            </p>
+          </div>
+
+          <div class="w-full bg-[#FBF9F6] border border-slate-200/80 p-4 rounded-2xl flex items-center space-x-3.5 max-w-sm mx-auto text-left shadow-sm">
+            <Lock class="h-5 w-5 text-primary-neon shrink-0" />
+            <p class="text-[10px] text-text-secondary leading-normal">
+              Pour des raisons de déontologie, nous ne collaborons qu'avec <strong class="text-slate-900">un seul artisan par département</strong>. Si votre zone est libre, vous obtiendrez le monopole complet.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Elements
+  const form = document.getElementById('wizard-form') as HTMLFormElement;
+  const formContainer = document.getElementById('form-container');
+  const progressHeader = document.getElementById('form-progress-header');
+  
+  const stepLabel = document.getElementById('step-label');
+  const stepPercent = document.getElementById('step-percent');
+  const progressBarFill = document.getElementById('progress-bar-fill');
+  
+  const btnNext = document.getElementById('btn-next') as HTMLButtonElement;
+  const btnBack = document.getElementById('btn-back') as HTMLButtonElement;
+  const btnSubmit = document.getElementById('btn-submit') as HTMLButtonElement;
+  const btnBackSpacer = document.getElementById('btn-back-spacer');
+
+  // Step contents
+  const step1 = document.getElementById('step-1-content');
+  const step2 = document.getElementById('step-2-content');
+  const step3 = document.getElementById('step-3-content');
+  const stepSuccess = document.getElementById('step-success-content');
+
+  // Inputs
+  const zipInput = document.getElementById('form-zip') as HTMLInputElement;
+  const zipCharCount = document.getElementById('zip-char-count');
+  const zipError = document.getElementById('zip-error');
+  
+  const companyInput = document.getElementById('form-company') as HTMLInputElement;
+  const ownerInput = document.getElementById('form-owner') as HTMLInputElement;
+  const phoneInput = document.getElementById('form-phone') as HTMLInputElement;
+  const emailInput = document.getElementById('form-email') as HTMLInputElement;
+  const credentialsError = document.getElementById('credentials-error');
+  
+  const successZip = document.getElementById('success-zip');
+  const successNiche = document.getElementById('success-niche');
+
+  let currentStep = 1;
+
+  // Track zip character typing
+  if (zipInput && zipCharCount) {
+    zipInput.addEventListener('input', () => {
+      const val = zipInput.value.replace(/\D/g, ''); // keep only numbers
+      zipInput.value = val;
+      zipCharCount.textContent = `${val.length}/5`;
+      if (zipError) zipError.classList.add('hidden');
+    });
+  }
+
+  function validateStep(step: number): boolean {
+    if (step === 1) {
+      return true; // selection radio has default value
+    }
+    
+    if (step === 2) {
+      const val = zipInput?.value.trim() || '';
+      const isValid = val.length === 2 || val.length === 5;
+      if (!isValid && zipError) {
+        zipError.classList.remove('hidden');
+      }
+      return isValid;
+    }
+
+    if (step === 3) {
+      const comp = companyInput?.value.trim() || '';
+      const owner = ownerInput?.value.trim() || '';
+      const phone = phoneInput?.value.trim() || '';
+      const email = emailInput?.value.trim() || '';
+      
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      const isCompValid = comp.length >= 2;
+      const isOwnerValid = owner.length >= 2;
+      const isPhoneValid = phone.replace(/\D/g, '').length >= 10;
+      const isEmailValid = emailRegex.test(email);
+
+      const allValid = isCompValid && isOwnerValid && isPhoneValid && isEmailValid;
+      if (!allValid && credentialsError) {
+        credentialsError.classList.remove('hidden');
+      }
+      return allValid;
+    }
+
+    return false;
+  }
+
+  function updateWizardUI() {
+    // Toggle content visibility
+    if (currentStep === 1) {
+      step1?.classList.remove('hidden');
+      step2?.classList.add('hidden');
+      step3?.classList.add('hidden');
+      
+      btnBack?.classList.add('hidden');
+      btnBackSpacer?.classList.remove('hidden');
+      btnNext?.classList.remove('hidden');
+      btnSubmit?.classList.add('hidden');
+      
+      if (stepLabel) stepLabel.textContent = "Étape 1 sur 3";
+      if (stepPercent) stepPercent.textContent = "33%";
+      if (progressBarFill) progressBarFill.style.width = "33%";
+    } 
+    else if (currentStep === 2) {
+      step1?.classList.add('hidden');
+      step2?.classList.remove('hidden');
+      step3?.classList.add('hidden');
+      
+      btnBack?.classList.remove('hidden');
+      btnBackSpacer?.classList.add('hidden');
+      btnNext?.classList.remove('hidden');
+      btnSubmit?.classList.add('hidden');
+      
+      if (stepLabel) stepLabel.textContent = "Étape 2 sur 3";
+      if (stepPercent) stepPercent.textContent = "66%";
+      if (progressBarFill) progressBarFill.style.width = "66%";
+    } 
+    else if (currentStep === 3) {
+      step1?.classList.add('hidden');
+      step2?.classList.add('hidden');
+      step3?.classList.remove('hidden');
+      
+      btnBack?.classList.remove('hidden');
+      btnBackSpacer?.classList.add('hidden');
+      btnNext?.classList.add('hidden');
+      btnSubmit?.classList.remove('hidden');
+      
+      if (stepLabel) stepLabel.textContent = "Étape 3 sur 3";
+      if (stepPercent) stepPercent.textContent = "95%";
+      if (progressBarFill) progressBarFill.style.width = "95%";
+    }
+  }
+
+  // Next button click handler
+  if (btnNext) {
+    btnNext.addEventListener('click', () => {
+      if (validateStep(currentStep)) {
+        currentStep++;
+        updateWizardUI();
+      }
+    });
+  }
+
+  // Back button click handler
+  if (btnBack) {
+    btnBack.addEventListener('click', () => {
+      if (currentStep > 1) {
+        currentStep--;
+        updateWizardUI();
+      }
+    });
+  }
+
+  // Reset error states on typing
+  if (companyInput) companyInput.addEventListener('input', () => credentialsError?.classList.add('hidden'));
+  if (ownerInput) ownerInput.addEventListener('input', () => credentialsError?.classList.add('hidden'));
+  if (phoneInput) phoneInput.addEventListener('input', () => credentialsError?.classList.add('hidden'));
+  if (emailInput) emailInput.addEventListener('input', () => credentialsError?.classList.add('hidden'));
+
+  // Form submission handler
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      if (!validateStep(3)) return;
+
+      // Select selected radio niche value
+      const nicheInput = form.querySelector('input[name="niche"]:checked') as HTMLInputElement;
+      const nicheValue = nicheInput?.value || 'Toiture & Couverture';
+      const zipValue = zipInput?.value.trim() || '';
+
+      const payload = {
+        niche: nicheValue,
+        zipCode: zipValue,
+        companyName: companyInput?.value.trim(),
+        contactName: ownerInput?.value.trim(),
+        phone: phoneInput?.value.trim().replace(/\s/g, ''),
+        email: emailInput?.value.trim()
+      };
+
+      // Loading state on submit button
+      if (btnSubmit) {
+        btnSubmit.disabled = true;
+        btnSubmit.textContent = "Transmission en cours...";
+      }
+
+      try {
+        const response = await fetch('/api/availability', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          // Hide form and show success
+          form.classList.add('hidden');
+          progressHeader?.classList.add('hidden');
+          stepSuccess?.classList.remove('hidden');
+          
+          if (successZip) successZip.textContent = zipValue;
+          if (successNiche) successNiche.textContent = nicheValue;
+        } else {
+          const errData = await response.json();
+          if (credentialsError) {
+            credentialsError.textContent = `⚠️ Erreur de transmission : ${errData.errors?.join(', ') || 'Veuillez réessayer.'}`;
+            credentialsError.classList.remove('hidden');
+          }
+        }
+      } catch (err) {
+        console.error('Submission error:', err);
+        if (credentialsError) {
+          credentialsError.textContent = "⚠️ Une erreur de connexion est survenue. Veuillez réessayer.";
+          credentialsError.classList.remove('hidden');
+        }
+      } finally {
+        if (btnSubmit) {
+          btnSubmit.disabled = false;
+          btnSubmit.innerHTML = `<span>Vérifier la disponibilité</span><svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9-7-9-7-9 7 9 7z" /></svg>`;
+        }
+      }
+    });
+  }
+</script>

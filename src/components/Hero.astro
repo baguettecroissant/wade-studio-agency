@@ -1,0 +1,268 @@
+---
+// Hero component
+import { ShieldCheck, Zap, Activity } from '@lucide/astro';
+---
+
+<section class="relative overflow-hidden py-20 lg:py-32">
+  <div class="container mx-auto max-w-7xl px-6">
+    <div class="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:items-center">
+      
+      <!-- Left Column: Copywriting -->
+      <div class="flex flex-col space-y-8 lg:col-span-6">
+        <!-- Badge -->
+        <div class="inline-flex self-start items-center space-x-2 rounded-full border border-primary-neon/15 bg-primary-neon/5 px-3.5 py-1.5 backdrop-blur-sm">
+          <ShieldCheck class="h-4.5 w-4.5 text-primary-neon" />
+          <span class="font-mono text-[10px] font-bold text-primary-neon uppercase tracking-widest">B2B Exclusivité Totale</span>
+        </div>
+        
+        <!-- Main Hook -->
+        <h1 class="font-heading text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl leading-[1.15] sm:leading-[1.15]">
+          Arrêtez de partager vos clients.<br />
+          <span class="gradient-text-editorial">Obtenez des chantiers exclusifs.</span>
+        </h1>
+        
+        <!-- Sub-headline -->
+        <p class="font-sans text-lg text-text-secondary leading-relaxed max-w-xl">
+          Nous concevons des portails web locaux numéro 1 sur Google qui capturent des demandes de devis et vous les envoient en exclusivité. <span class="text-slate-900 font-bold">Zéro concurrence. 100% de réactivité.</span>
+        </p>
+        
+        <!-- CTA & Sub-label -->
+        <div class="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
+          <div class="relative group">
+            <a href="#availability-checker" class="relative inline-flex h-16 items-center justify-center rounded-2xl bg-primary-neon px-8 text-base font-bold text-white shadow-md transition-all duration-300 hover:bg-primary-neon/90 hover:scale-[1.01] active:scale-[0.99] border-none">
+              Vérifier la disponibilité dans mon secteur →
+            </a>
+          </div>
+          <div class="flex flex-col justify-center">
+            <span class="font-mono text-xs font-bold text-slate-800 flex items-center space-x-1.5">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-violet opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-violet"></span>
+              </span>
+              <span>Test gratuit & sans engagement</span>
+            </span>
+            <span class="text-xs text-text-secondary mt-0.5">Réponse instantanée — Exclusivité garantie</span>
+          </div>
+        </div>
+
+        <!-- Trust markers -->
+        <div class="pt-8 border-t border-slate-200 grid grid-cols-3 gap-6">
+          <div>
+            <span class="block font-heading text-3xl font-bold tracking-tight leading-none text-primary-neon" id="hero-count-leads">1,438</span>
+            <span class="text-xs text-text-secondary mt-1 block">Leads distribués ce mois</span>
+          </div>
+          <div>
+            <span class="block font-heading text-3xl font-bold tracking-tight leading-none text-accent-violet">0%</span>
+            <span class="text-xs text-text-secondary mt-1 block">Partage de fiches clients</span>
+          </div>
+          <div>
+            <span class="block font-heading text-3xl font-bold tracking-tight leading-none text-primary-neon">48h</span>
+            <span class="text-xs text-text-secondary mt-1 block">Mise en place moyenne</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Column: Interactive Premium Map Dashboard -->
+      <div class="lg:col-span-6">
+        <div class="relative w-full aspect-square max-w-[540px] mx-auto">
+          
+          <!-- Glassmorphic Dashboard Container -->
+          <div class="w-full h-full glass-card-neon rounded-3xl overflow-hidden flex flex-col relative shadow-md border border-slate-200/50">
+            
+            <!-- Top Dashboard Bar -->
+            <div class="px-6 py-4 border-b border-slate-100 bg-white/70 flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <span class="h-3 w-3 rounded-full bg-slate-300"></span>
+                <span class="h-3 w-3 rounded-full bg-slate-200"></span>
+                <span class="h-3 w-3 rounded-full bg-slate-100"></span>
+                <span class="font-mono text-xs text-text-secondary ml-3 tracking-wide select-none">wade-studio.agency // live-stream</span>
+              </div>
+              <div class="flex items-center space-x-2 bg-primary-neon/5 border border-primary-neon/10 px-2.5 py-1 rounded-full">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-neon opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-neon"></span>
+                </span>
+                <span class="font-mono text-[10px] font-bold text-primary-neon tracking-wider uppercase">LIVE FEED</span>
+              </div>
+            </div>
+            
+            <!-- Dashboard Main Area -->
+            <div class="flex-1 relative p-6 flex flex-col justify-between overflow-hidden bg-white/80">
+              
+              <!-- Dotted Map Concept SVG of France/Italy -->
+              <div class="absolute inset-0 flex items-center justify-center opacity-70 p-4">
+                <svg viewBox="0 0 400 400" class="w-full h-full max-w-[340px]" fill="none" stroke="currentColor">
+                  <!-- Abstract Grid representation of France Map outline -->
+                  <path d="M190,40 L230,50 L270,90 L280,120 L270,160 L300,195 L320,230 L310,250 L280,260 L290,290 L260,320 L220,330 L195,350 L180,350 L150,320 L120,310 L95,300 L90,270 L110,250 L100,210 L130,170 L110,130 L120,90 L150,60 Z" stroke-width="1.5" class="stroke-accent-violet/20" stroke-dasharray="4 6"></path>
+                  
+                  <!-- Italy Abstract outline beside it -->
+                  <path d="M290,230 L305,245 L320,260 L345,300 L370,325 L380,345 L365,355 L350,340 L340,315 L325,290 L305,270 L285,250 Z" stroke-width="1.5" class="stroke-accent-violet/10" stroke-dasharray="4 6"></path>
+                  
+                  <!-- Geographic Dotted Highlights -->
+                  <g class="fill-accent-violet/15">
+                    <circle cx="200" cy="100" r="3" />
+                    <circle cx="150" cy="150" r="2.5" />
+                    <circle cx="250" cy="130" r="3" />
+                    <circle cx="170" cy="200" r="2.5" />
+                    <circle cx="230" cy="230" r="3" />
+                    <circle cx="140" cy="250" r="2" />
+                    <circle cx="270" cy="280" r="2.5" />
+                    <circle cx="200" cy="300" r="3" />
+                    <circle cx="160" cy="80" r="2.5" />
+                    <circle cx="220" cy="60" r="2" />
+                    <circle cx="340" cy="310" r="2" />
+                    <circle cx="320" cy="275" r="2" />
+                  </g>
+
+                  <!-- Dynamic Map Pulsing Dots (controlled by JS) -->
+                  <g id="map-glow-dots">
+                    <!-- Lille (59) -->
+                    <circle cx="220" cy="60" r="6" class="fill-secondary-neon/50 animate-pulse map-dot" data-city="Lille" />
+                    <!-- Paris (75) -->
+                    <circle cx="200" cy="100" r="6" class="fill-secondary-neon/50 animate-pulse map-dot" data-city="Paris" />
+                    <!-- Nantes (44) -->
+                    <circle cx="140" cy="180" r="6" class="fill-secondary-neon/50 animate-pulse map-dot" data-city="Nantes" />
+                    <!-- Lyon (69) -->
+                    <circle cx="250" cy="210" r="6" class="fill-secondary-neon/50 animate-pulse map-dot" data-city="Lyon" />
+                    <!-- Marseille (13) -->
+                    <circle cx="260" cy="290" r="6" class="fill-secondary-neon/50 animate-pulse map-dot" data-city="Marseille" />
+                    <!-- Toulouse (31) -->
+                    <circle cx="170" cy="280" r="6" class="fill-secondary-neon/50 animate-pulse map-dot" data-city="Toulouse" />
+                    <!-- Nice (06) -->
+                    <circle cx="290" cy="280" r="6" class="fill-secondary-neon/50 animate-pulse map-dot font-bold" data-city="Nice" />
+                    <!-- Rome -->
+                    <circle cx="340" cy="310" r="6" class="fill-secondary-neon/50 animate-pulse map-dot" data-city="Rome" />
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Top metrics overlay inside Dashboard -->
+              <div class="grid grid-cols-2 gap-4 relative z-10 w-full">
+                <div class="bg-white border border-slate-100 p-3.5 rounded-xl shadow-md shadow-indigo-100/10">
+                  <div class="flex items-center space-x-1.5 text-text-secondary text-[11px] font-mono uppercase tracking-wider">
+                    <Activity class="h-3 w-3 text-secondary-neon" />
+                    <span>Taux de qualification</span>
+                  </div>
+                  <span class="block text-lg font-mono font-bold text-slate-900 mt-1">98.4%</span>
+                </div>
+                <div class="bg-white border border-slate-100 p-3.5 rounded-xl shadow-md shadow-indigo-100/10">
+                  <div class="flex items-center space-x-1.5 text-text-secondary text-[11px] font-mono uppercase tracking-wider">
+                    <Zap class="h-3 w-3 text-orange-600" />
+                    <span>Délai de transfert</span>
+                  </div>
+                  <span class="block text-lg font-mono font-bold text-slate-900 mt-1">Instant (SMS)</span>
+                </div>
+              </div>
+
+              <!-- Dynamic Feed Overlay Card (updates via JS) -->
+              <div class="w-full relative z-10 pt-16">
+                <div class="glass-card-neon border-slate-200 bg-white/95 p-4 rounded-2xl shadow-md transition-all duration-500 translate-y-0" id="live-lead-card">
+                  <div class="flex items-center justify-between border-b border-slate-100 pb-2.5 mb-2.5">
+                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-primary-neon flex items-center space-x-1">
+                      <span class="h-1.5 w-1.5 rounded-full bg-primary-neon animate-ping"></span>
+                      <span>Nouveau Lead Qualifié !</span>
+                    </span>
+                    <span class="text-[10px] font-mono text-text-secondary" id="lead-time">À l'instant</span>
+                  </div>
+                  
+                  <div class="flex items-start justify-between">
+                    <div>
+                      <h4 class="font-heading text-sm font-bold text-slate-900" id="lead-niche">PAC (Pompe à Chaleur)</h4>
+                      <p class="text-xs text-text-secondary mt-0.5" id="lead-location">69002 - Lyon (Rhône)</p>
+                      <div class="inline-flex items-center space-x-1.5 bg-success-green/10 border border-success-green/20 px-2 py-0.5 rounded-full mt-2">
+                        <span class="h-1.5 w-1.5 rounded-full bg-success-green"></span>
+                        <span class="font-mono text-[9px] text-success-green uppercase font-semibold">Tél. Validé</span>
+                      </div>
+                    </div>
+                    
+                    <div class="text-right flex flex-col justify-between h-full">
+                      <span class="font-mono text-[10px] text-text-secondary">Exclusivité :</span>
+                      <span class="font-heading text-xs font-bold text-white mt-0.5 bg-primary-neon border border-primary-neon/20 px-2 py-1 rounded-md block shadow-sm">1 seul artisan</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+          <!-- Floating Phone Mockup -->
+          <div class="absolute -bottom-6 -left-6 w-44 sm:w-52 md:w-56 z-20 animate-float-slow select-none pointer-events-none drop-shadow-[0_15px_30px_rgba(0,0,0,0.12)]">
+            <img src="/images/hero_phone_mockup.png" alt="Wade SMS Notification Mockup" class="w-full h-auto" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  // Array of dynamic leads to display on loop
+  const demoLeads = [
+    { niche: "Toiture & Couverture", location: "06000 - Nice (Alpes-Maritimes)", city: "Nice" },
+    { niche: "Pompe à Chaleur", location: "69002 - Lyon (Rhône)", city: "Lyon" },
+    { niche: "Solaire Photovoltaïque", location: "31000 - Toulouse (Haute-Garonne)", city: "Toulouse" },
+    { niche: "Rénovation Globale", location: "44000 - Nantes (Loire-Atlantique)", city: "Nantes" },
+    { niche: "Toiture & Couverture", location: "59000 - Lille (Nord)", city: "Lille" },
+    { niche: "Chauffage Solaire", location: "75008 - Paris (Île-de-France)", city: "Paris" },
+    { niche: "Pompe à chaleur", location: "13001 - Marseille (Bouches-du-Rhône)", city: "Marseille" },
+    { niche: "Solaire Photovoltaïque", location: "00100 - Rome (Lazio)", city: "Rome" }
+  ];
+
+  let currentLeadIndex = 0;
+  const leadCard = document.getElementById('live-lead-card');
+  const leadNiche = document.getElementById('lead-niche');
+  const leadLocation = document.getElementById('lead-location');
+  const leadTime = document.getElementById('lead-time');
+  const totalLeadsCounter = document.getElementById('hero-count-leads');
+  const mapDots = document.querySelectorAll('.map-dot');
+
+  // Dynamic values
+  let totalLeads = 1438;
+
+  function updateLeadFeed() {
+    if (!leadCard || !leadNiche || !leadLocation || !leadTime) return;
+
+    // Fade out effect
+    leadCard.style.opacity = '0';
+    leadCard.style.transform = 'translateY(10px)';
+
+    setTimeout(() => {
+      currentLeadIndex = (currentLeadIndex + 1) % demoLeads.length;
+      const nextLead = demoLeads[currentLeadIndex];
+
+      // Update contents
+      leadNiche.textContent = nextLead.niche;
+      leadLocation.textContent = nextLead.location;
+      leadTime.textContent = "À l'instant";
+
+      // Increment total counter slowly
+      totalLeads += Math.floor(Math.random() * 2) + 1;
+      if (totalLeadsCounter) {
+        totalLeadsCounter.textContent = totalLeads.toLocaleString();
+      }
+
+      // Highlight corresponding map dot
+      mapDots.forEach((dot: any) => {
+        const dotCity = dot.getAttribute('data-city');
+        if (dotCity === nextLead.city) {
+          dot.classList.remove('fill-secondary-neon/50');
+          dot.classList.add('fill-primary-neon', 'scale-[2.5]');
+          dot.setAttribute('r', '8');
+        } else {
+          dot.classList.remove('fill-primary-neon', 'scale-[2.5]');
+          dot.classList.add('fill-secondary-neon/50');
+          dot.setAttribute('r', '6');
+        }
+      });
+
+      // Fade back in
+      leadCard.style.opacity = '1';
+      leadCard.style.transform = 'translateY(0)';
+    }, 500);
+  }
+
+  // Update lead feed every 4 seconds
+  setInterval(updateLeadFeed, 4000);
+</script>

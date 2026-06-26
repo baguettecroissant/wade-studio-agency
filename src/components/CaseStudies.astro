@@ -1,0 +1,399 @@
+---
+// CaseStudies component
+import { BarChart3, TrendingUp, Calendar, MapPin, Sparkles, Sun, Hammer } from '@lucide/astro';
+---
+
+<section id="case-studies" class="py-20 lg:py-32 bg-[#FBF9F6]/30 border-t border-slate-100 relative">
+  
+  <div class="container mx-auto max-w-7xl px-6 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-20 lg:mb-28">
+      <span class="font-mono text-[10px] font-semibold text-primary-neon uppercase tracking-wider bg-primary-neon/5 border border-primary-neon/10 px-3 py-1 rounded-full">
+        Preuves de Performance
+      </span>
+      <h2 class="font-heading text-3xl font-normal text-slate-900 sm:text-4xl lg:text-5xl mt-6">
+        Des résultats validés par <span class="gradient-text-editorial">les rapports Google</span>
+      </h2>
+      <p class="font-sans text-base lg:text-lg text-text-secondary mt-6 leading-relaxed">
+        Nous masquons les noms de domaine précis pour protéger le monopole de nos partenaires et préserver notre positionnement SEO local.
+      </p>
+    </div>
+
+    <!-- Case Studies Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+      
+      <!-- Card 1: Toiture Alpes-Maritimes -->
+      <div class="glass-card-neon rounded-3xl overflow-hidden border border-slate-200 shadow-sm flex flex-col justify-between group hover:border-primary-neon/30 transition-all duration-300">
+        <div class="h-44 w-full overflow-hidden relative">
+          <img src="/images/artisan_couvreur.png" alt="Artisan Couvreur Alpes-Maritimes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent"></div>
+        </div>
+        <div class="p-6 lg:p-8">
+          
+          <!-- Card Title & Metadata -->
+          <div class="flex justify-between items-start mb-6">
+            <div class="flex items-center space-x-3.5">
+              <div class="h-10 w-10 rounded-xl bg-primary-neon/5 border border-primary-neon/10 flex items-center justify-center text-primary-neon">
+                <MapPin class="h-5 w-5" />
+              </div>
+              <div>
+                <h3 class="font-heading font-normal text-slate-900 text-lg">Toiture & Couverture</h3>
+                <p class="text-xs text-text-secondary">Alpes-Maritimes (06)</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-1.5 bg-success-green/10 border border-success-green/20 px-2.5 py-1 rounded-full">
+              <span class="h-1.5 w-1.5 rounded-full bg-success-green"></span>
+              <span class="font-mono text-[9px] text-success-green font-semibold uppercase tracking-wider">Actif</span>
+            </div>
+          </div>
+          
+          <!-- Key Metric Stats -->
+          <div class="grid grid-cols-2 gap-4 mb-8">
+            <div class="bg-slate-50 border border-slate-100 p-3.5 rounded-xl">
+              <span class="text-[10px] font-mono text-text-secondary uppercase tracking-wider">Leads qualifiés</span>
+              <span class="block text-2xl font-mono font-bold text-slate-900 mt-1.5">+120</span>
+              <span class="text-[10px] text-primary-neon mt-1 block font-medium">sur 3 mois</span>
+            </div>
+            <div class="bg-slate-50 border border-slate-100 p-3.5 rounded-xl">
+              <span class="text-[10px] font-mono text-text-secondary uppercase tracking-wider">CA Partenaire</span>
+              <span class="block text-2xl font-mono font-bold text-success-green mt-1.5">+84 000 €</span>
+              <span class="text-[10px] text-text-secondary mt-1 block">CA Facturé</span>
+            </div>
+          </div>
+
+          <!-- Glowing GSC Chart Visual -->
+          <div class="relative rounded-2xl border border-slate-200 overflow-hidden bg-slate-50/80 p-4 h-48 flex flex-col justify-between shadow-inner">
+            <div class="flex justify-between items-center z-10">
+              <span class="text-[10px] font-mono font-semibold text-text-secondary uppercase tracking-wider flex items-center space-x-1.5">
+                <BarChart3 class="h-3.5 w-3.5 text-primary-neon" />
+                <span>Google Search Console (Clics Organiques)</span>
+              </span>
+              <span class="text-[9px] font-mono text-primary-neon bg-primary-neon/5 px-2 py-0.5 rounded border border-primary-neon/10 font-semibold">3 Mois</span>
+            </div>
+
+            <!-- SVG Line Chart (Clean Editorial Green) -->
+            <div class="absolute inset-x-0 bottom-4 h-32 select-none px-2">
+              <svg viewBox="0 0 300 100" class="w-full h-full" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="chartGrad1" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#0B3C2E" stop-opacity="0.1" />
+                    <stop offset="100%" stop-color="#0B3C2E" stop-opacity="0.0" />
+                  </linearGradient>
+                </defs>
+                <path d="M0,90 Q30,85 60,75 T120,60 T180,45 T240,25 T300,10 L300,100 L0,100 Z" fill="url(#chartGrad1)" />
+                <path d="M0,90 Q30,85 60,75 T120,60 T180,45 T240,25 T300,10" fill="none" stroke="#0B3C2E" stroke-width="2" stroke-linecap="round" />
+                <circle cx="300" cy="10" r="4" fill="#0B3C2E" />
+                <circle cx="300" cy="10" r="2.5" fill="#FFFFFF" />
+              </svg>
+            </div>
+
+            <!-- Absolute overlay showing chart is anonymized -->
+            <div class="absolute inset-0 bg-white/10 backdrop-blur-[1px] flex items-center justify-center border border-white/5 rounded-2xl m-2">
+              <div class="bg-white/95 border border-slate-200 px-3.5 py-1.5 rounded-lg flex items-center space-x-1.5 shadow-sm">
+                <span class="h-1.5 w-1.5 rounded-full bg-primary-neon"></span>
+                <span class="font-mono text-[9px] font-semibold text-text-secondary uppercase tracking-wider">Flux Réel Partenaire</span>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="px-6 py-4 lg:px-8 lg:py-5 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between text-xs text-text-secondary">
+          <span class="flex items-center space-x-1.5">
+            <Calendar class="h-3.5 w-3.5 text-primary-neon" />
+            <span>Mise en ligne : Mars 2026</span>
+          </span>
+          <span class="text-slate-900 font-medium flex items-center space-x-1">
+            <Sparkles class="h-3.5 w-3.5 text-[#9A784E]" />
+            <span>Position 1.3 Google</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Card 2: PAC Gironde -->
+      <div class="glass-card-neon rounded-3xl overflow-hidden border border-slate-200 shadow-sm flex flex-col justify-between group hover:border-accent-violet/30 transition-all duration-300">
+        <div class="h-44 w-full overflow-hidden relative">
+          <img src="/images/artisan_chauffagiste.png" alt="Artisan Chauffagiste Gironde" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent"></div>
+        </div>
+        <div class="p-6 lg:p-8">
+          
+          <!-- Card Title & Metadata -->
+          <div class="flex justify-between items-start mb-6">
+            <div class="flex items-center space-x-3.5">
+              <div class="h-10 w-10 rounded-xl bg-accent-violet/5 border border-accent-violet/10 flex items-center justify-center text-accent-violet">
+                <MapPin class="h-5 w-5" />
+              </div>
+              <div>
+                <h3 class="font-heading font-normal text-slate-900 text-lg">Pompe à Chaleur (PAC)</h3>
+                <p class="text-xs text-text-secondary">Gironde (33)</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-1.5 bg-success-green/10 border border-success-green/20 px-2.5 py-1 rounded-full">
+              <span class="h-1.5 w-1.5 rounded-full bg-success-green"></span>
+              <span class="font-mono text-[9px] text-success-green font-semibold uppercase tracking-wider">Actif</span>
+            </div>
+          </div>
+          
+          <!-- Key Metric Stats -->
+          <div class="grid grid-cols-2 gap-4 mb-8">
+            <div class="bg-slate-50 border border-slate-100 p-3.5 rounded-xl">
+              <span class="text-[10px] font-mono text-text-secondary uppercase tracking-wider">Leads par mois</span>
+              <span class="block text-2xl font-mono font-bold text-slate-900 mt-1.5">45 / mois</span>
+              <span class="text-[10px] text-accent-violet mt-1 block font-medium">Exclusivité totale</span>
+            </div>
+            <div class="bg-slate-50 border border-slate-100 p-3.5 rounded-xl">
+              <span class="text-[10px] font-mono text-text-secondary uppercase tracking-wider">Taux de signature</span>
+              <span class="block text-2xl font-mono font-bold text-success-green mt-1.5">48%</span>
+              <span class="text-[10px] text-text-secondary mt-1 block">Moyenne constatée</span>
+            </div>
+          </div>
+
+          <!-- Glowing GSC Chart Visual -->
+          <div class="relative rounded-2xl border border-slate-200 overflow-hidden bg-slate-50/80 p-4 h-48 flex flex-col justify-between shadow-inner">
+            <div class="flex justify-between items-center z-10">
+              <span class="text-[10px] font-mono font-semibold text-text-secondary uppercase tracking-wider flex items-center space-x-1.5">
+                <BarChart3 class="h-3.5 w-3.5 text-accent-violet" />
+                <span>Google Search Console (Clics Organiques)</span>
+              </span>
+              <span class="text-[9px] font-mono text-accent-violet bg-accent-violet/5 px-2 py-0.5 rounded border border-accent-violet/10 font-semibold">6 Mois</span>
+            </div>
+
+            <!-- SVG Line Chart (Clean Bronze Line) -->
+            <div class="absolute inset-x-0 bottom-4 h-32 select-none px-2">
+              <svg viewBox="0 0 300 100" class="w-full h-full" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="chartGrad2" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#9A784E" stop-opacity="0.1" />
+                    <stop offset="100%" stop-color="#9A784E" stop-opacity="0.0" />
+                  </linearGradient>
+                </defs>
+                <path d="M0,70 Q40,65 80,45 T160,35 T240,15 T300,8 L300,100 L0,100 Z" fill="url(#chartGrad2)" />
+                <path d="M0,70 Q40,65 80,45 T160,35 T240,15 T300,8" fill="none" stroke="#9A784E" stroke-width="2" stroke-linecap="round" />
+                <circle cx="300" cy="8" r="4" fill="#9A784E" />
+                <circle cx="300" cy="8" r="2.5" fill="#FFFFFF" />
+              </svg>
+            </div>
+
+            <!-- Absolute overlay showing chart is anonymized -->
+            <div class="absolute inset-0 bg-white/10 backdrop-blur-[1px] flex items-center justify-center border border-white/5 rounded-2xl m-2">
+              <div class="bg-white/95 border border-slate-200 px-3.5 py-1.5 rounded-lg flex items-center space-x-1.5 shadow-sm">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent-violet"></span>
+                <span class="font-mono text-[9px] font-semibold text-text-secondary uppercase tracking-wider">Flux Réel Partenaire</span>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="px-6 py-4 lg:px-8 lg:py-5 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between text-xs text-text-secondary">
+          <span class="flex items-center space-x-1.5">
+            <Calendar class="h-3.5 w-3.5 text-accent-violet" />
+            <span>Mise en ligne : Janvier 2026</span>
+          </span>
+          <span class="text-slate-900 font-medium flex items-center space-x-1">
+            <Sparkles class="h-3.5 w-3.5 text-[#9A784E]" />
+            <span>Position 1.7 Google</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Card 3: Solaire Photovoltaïque Var -->
+      <div class="glass-card-neon rounded-3xl overflow-hidden border border-slate-200 shadow-sm flex flex-col justify-between group hover:border-primary-neon/30 transition-all duration-300">
+        <div class="h-44 w-full overflow-hidden relative">
+          <img src="/images/artisan_solaire.png" alt="Artisan Solaire Var" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent"></div>
+        </div>
+        <div class="p-6 lg:p-8">
+          
+          <!-- Card Title & Metadata -->
+          <div class="flex justify-between items-start mb-6">
+            <div class="flex items-center space-x-3.5">
+              <div class="h-10 w-10 rounded-xl bg-primary-neon/5 border border-primary-neon/10 flex items-center justify-center text-primary-neon">
+                <Sun class="h-5 w-5" />
+              </div>
+              <div>
+                <h3 class="font-heading font-normal text-slate-900 text-lg">Solaire Photovoltaïque</h3>
+                <p class="text-xs text-text-secondary">Var (83)</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-1.5 bg-success-green/10 border border-success-green/20 px-2.5 py-1 rounded-full">
+              <span class="h-1.5 w-1.5 rounded-full bg-success-green"></span>
+              <span class="font-mono text-[9px] text-success-green font-semibold uppercase tracking-wider">Actif</span>
+            </div>
+          </div>
+          
+          <!-- Key Metric Stats -->
+          <div class="grid grid-cols-2 gap-4 mb-8">
+            <div class="bg-slate-50 border border-slate-100 p-3.5 rounded-xl">
+              <span class="text-[10px] font-mono text-text-secondary uppercase tracking-wider">Leads qualifiés</span>
+              <span class="block text-2xl font-mono font-bold text-slate-900 mt-1.5">+85</span>
+              <span class="text-[10px] text-primary-neon mt-1 block font-medium">sur 2 mois</span>
+            </div>
+            <div class="bg-slate-50 border border-slate-100 p-3.5 rounded-xl">
+              <span class="text-[10px] font-mono text-text-secondary uppercase tracking-wider">CA Partenaire</span>
+              <span class="block text-2xl font-mono font-bold text-success-green mt-1.5">+62 000 €</span>
+              <span class="text-[10px] text-text-secondary mt-1 block">CA Facturé</span>
+            </div>
+          </div>
+
+          <!-- Glowing GSC Chart Visual -->
+          <div class="relative rounded-2xl border border-slate-200 overflow-hidden bg-slate-50/80 p-4 h-48 flex flex-col justify-between shadow-inner">
+            <div class="flex justify-between items-center z-10">
+              <span class="text-[10px] font-mono font-semibold text-text-secondary uppercase tracking-wider flex items-center space-x-1.5">
+                <BarChart3 class="h-3.5 w-3.5 text-primary-neon" />
+                <span>Google Search Console (Clics Organiques)</span>
+              </span>
+              <span class="text-[9px] font-mono text-primary-neon bg-primary-neon/5 px-2 py-0.5 rounded border border-primary-neon/10 font-semibold">2 Mois</span>
+            </div>
+
+            <!-- SVG Line Chart (Clean Green Line) -->
+            <div class="absolute inset-x-0 bottom-4 h-32 select-none px-2">
+              <svg viewBox="0 0 300 100" class="w-full h-full" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="chartGrad3" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#0B3C2E" stop-opacity="0.1" />
+                    <stop offset="100%" stop-color="#0B3C2E" stop-opacity="0.0" />
+                  </linearGradient>
+                </defs>
+                <path d="M0,85 Q35,80 70,60 T140,55 T210,30 T300,12 L300,100 L0,100 Z" fill="url(#chartGrad3)" />
+                <path d="M0,85 Q35,80 70,60 T140,55 T210,30 T300,12" fill="none" stroke="#0B3C2E" stroke-width="2" stroke-linecap="round" />
+                <circle cx="300" cy="12" r="4" fill="#0B3C2E" />
+                <circle cx="300" cy="12" r="2.5" fill="#FFFFFF" />
+              </svg>
+            </div>
+
+            <!-- Absolute overlay showing chart is anonymized -->
+            <div class="absolute inset-0 bg-white/10 backdrop-blur-[1px] flex items-center justify-center border border-white/5 rounded-2xl m-2">
+              <div class="bg-white/95 border border-slate-200 px-3.5 py-1.5 rounded-lg flex items-center space-x-1.5 shadow-sm">
+                <span class="h-1.5 w-1.5 rounded-full bg-primary-neon"></span>
+                <span class="font-mono text-[9px] font-semibold text-text-secondary uppercase tracking-wider">Flux Réel Partenaire</span>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="px-6 py-4 lg:px-8 lg:py-5 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between text-xs text-text-secondary">
+          <span class="flex items-center space-x-1.5">
+            <Calendar class="h-3.5 w-3.5 text-primary-neon" />
+            <span>Mise en ligne : Février 2026</span>
+          </span>
+          <span class="text-slate-900 font-medium flex items-center space-x-1">
+            <Sparkles class="h-3.5 w-3.5 text-[#9A784E]" />
+            <span>Position 1.5 Google</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Card 4: Renovation Globale Rhone -->
+      <div class="glass-card-neon rounded-3xl overflow-hidden border border-slate-200 shadow-sm flex flex-col justify-between group hover:border-accent-violet/30 transition-all duration-300">
+        <div class="h-44 w-full overflow-hidden relative">
+          <img src="/images/artisan_renovation.png" alt="Artisan Renovation Rhone" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent"></div>
+        </div>
+        <div class="p-6 lg:p-8">
+          
+          <!-- Card Title & Metadata -->
+          <div class="flex justify-between items-start mb-6">
+            <div class="flex items-center space-x-3.5">
+              <div class="h-10 w-10 rounded-xl bg-accent-violet/5 border border-accent-violet/10 flex items-center justify-center text-accent-violet">
+                <Hammer class="h-5 w-5" />
+              </div>
+              <div>
+                <h3 class="font-heading font-normal text-slate-900 text-lg">Rénovation Globale</h3>
+                <p class="text-xs text-text-secondary">Rhône (69)</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-1.5 bg-success-green/10 border border-success-green/20 px-2.5 py-1 rounded-full">
+              <span class="h-1.5 w-1.5 rounded-full bg-success-green"></span>
+              <span class="font-mono text-[9px] text-success-green font-semibold uppercase tracking-wider">Actif</span>
+            </div>
+          </div>
+          
+          <!-- Key Metric Stats -->
+          <div class="grid grid-cols-2 gap-4 mb-8">
+            <div class="bg-slate-50 border border-slate-100 p-3.5 rounded-xl">
+              <span class="text-[10px] font-mono text-text-secondary uppercase tracking-wider">Leads par mois</span>
+              <span class="block text-2xl font-mono font-bold text-slate-900 mt-1.5">30 / mois</span>
+              <span class="text-[10px] text-accent-violet mt-1 block font-medium">Exclusivité totale</span>
+            </div>
+            <div class="bg-slate-50 border border-slate-100 p-3.5 rounded-xl">
+              <span class="text-[10px] font-mono text-text-secondary uppercase tracking-wider">Taux de signature</span>
+              <span class="block text-2xl font-mono font-bold text-success-green mt-1.5">52%</span>
+              <span class="text-[10px] text-text-secondary mt-1 block">Moyenne constatée</span>
+            </div>
+          </div>
+
+          <!-- Glowing GSC Chart Visual -->
+          <div class="relative rounded-2xl border border-slate-200 overflow-hidden bg-slate-50/80 p-4 h-48 flex flex-col justify-between shadow-inner">
+            <div class="flex justify-between items-center z-10">
+              <span class="text-[10px] font-mono font-semibold text-text-secondary uppercase tracking-wider flex items-center space-x-1.5">
+                <BarChart3 class="h-3.5 w-3.5 text-accent-violet" />
+                <span>Google Search Console (Clics Organiques)</span>
+              </span>
+              <span class="text-[9px] font-mono text-accent-violet bg-accent-violet/5 px-2 py-0.5 rounded border border-accent-violet/10 font-semibold">4 Mois</span>
+            </div>
+
+            <!-- SVG Line Chart (Clean Bronze Line) -->
+            <div class="absolute inset-x-0 bottom-4 h-32 select-none px-2">
+              <svg viewBox="0 0 300 100" class="w-full h-full" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="chartGrad4" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#9A784E" stop-opacity="0.1" />
+                    <stop offset="100%" stop-color="#9A784E" stop-opacity="0.0" />
+                  </linearGradient>
+                </defs>
+                <path d="M0,80 Q40,75 80,55 T160,45 T240,25 T300,10 L300,100 L0,100 Z" fill="url(#chartGrad4)" />
+                <path d="M0,80 Q40,75 80,55 T160,45 T240,25 T300,10" fill="none" stroke="#9A784E" stroke-width="2" stroke-linecap="round" />
+                <circle cx="300" cy="10" r="4" fill="#9A784E" />
+                <circle cx="300" cy="10" r="2.5" fill="#FFFFFF" />
+              </svg>
+            </div>
+
+            <!-- Absolute overlay showing chart is anonymized -->
+            <div class="absolute inset-0 bg-white/10 backdrop-blur-[1px] flex items-center justify-center border border-white/5 rounded-2xl m-2">
+              <div class="bg-white/95 border border-slate-200 px-3.5 py-1.5 rounded-lg flex items-center space-x-1.5 shadow-sm">
+                <span class="h-1.5 w-1.5 rounded-full bg-accent-violet"></span>
+                <span class="font-mono text-[9px] font-semibold text-text-secondary uppercase tracking-wider">Flux Réel Partenaire</span>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="px-6 py-4 lg:px-8 lg:py-5 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between text-xs text-text-secondary">
+          <span class="flex items-center space-x-1.5">
+            <Calendar class="h-3.5 w-3.5 text-accent-violet" />
+            <span>Mise en ligne : Avril 2026</span>
+          </span>
+          <span class="text-slate-900 font-medium flex items-center space-x-1">
+            <Sparkles class="h-3.5 w-3.5 text-[#9A784E]" />
+            <span>Position 1.1 Google</span>
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Case Studies Rating -->
+    <div class="text-center mt-16 max-w-2xl mx-auto flex flex-col items-center">
+      <div class="flex items-center space-x-1 mb-4">
+        <span class="text-[#9A784E] text-lg">★</span>
+        <span class="text-[#9A784E] text-lg">★</span>
+        <span class="text-[#9A784E] text-lg">★</span>
+        <span class="text-[#9A784E] text-lg">★</span>
+        <span class="text-[#9A784E] text-lg">★</span>
+      </div>
+      <blockquote class="font-sans text-sm text-text-secondary italic leading-relaxed">
+        "Avant de travailler avec Wade Studio, j'achetais des leads sur des plateformes connues. J'étais le 4ème couvreur à appeler, les clients étaient agacés. Maintenant, je reçois des fiches qualifiées exclusives. Mon taux de signature est passé de 12% à 54%."
+      </blockquote>
+      <cite class="font-heading text-xs text-slate-900 not-italic font-bold mt-3.5 flex items-center space-x-1">
+        <span class="h-1.5 w-1.5 rounded-full bg-primary-neon"></span>
+        <span>Laurent B., Artisan Couvreur dans le 06</span>
+      </cite>
+    </div>
+
+  </div>
+</section>

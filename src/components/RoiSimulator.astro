@@ -1,0 +1,271 @@
+---
+// ROI Simulator Component
+import { Calculator, Sparkles, TrendingUp, Info } from '@lucide/astro';
+
+// Predefined settings for each niche
+const niches = [
+  { id: 'toiture', name: 'Toiture & Couverture', projectValue: 8000, cpl: 150 },
+  { id: 'solaire', name: 'Solaire Photovoltaïque', projectValue: 12000, cpl: 200 },
+  { id: 'pac', name: 'Pompe à Chaleur (PAC)', projectValue: 10000, cpl: 180 },
+  { id: 'renovation', name: 'Rénovation Globale', projectValue: 25000, cpl: 300 }
+];
+---
+
+<style>
+  /* Custom styled clean slider tracks for editorial look */
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    background: #E7E5E4;
+    height: 6px;
+    border-radius: 3px;
+    border: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -7px;
+    border: 2px solid #FFFFFF;
+    transition: transform 0.1s;
+  }
+  input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+  }
+  #roi-volume::-webkit-slider-thumb {
+    background: #0B3C2E;
+    box-shadow: 0 2px 8px rgba(11, 60, 46, 0.2);
+  }
+  #roi-closing::-webkit-slider-thumb {
+    background: #9A784E;
+    box-shadow: 0 2px 8px rgba(154, 120, 78, 0.25);
+  }
+</style>
+
+<section id="roi-simulator" class="py-20 lg:py-32 relative border-t border-slate-100 bg-[#FBF9F6]/50">
+  
+  <div class="container mx-auto max-w-7xl px-6 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
+      <span class="font-mono text-[10px] font-semibold text-primary-neon uppercase tracking-wider bg-primary-neon/5 border border-primary-neon/10 px-3 py-1 rounded-full">
+        Simulateur de Gains
+      </span>
+      <h2 class="font-heading text-3xl font-normal text-slate-900 sm:text-4xl lg:text-5xl mt-6">
+        Simulez votre <span class="gradient-text-editorial">chiffre d'affaires potentiel</span>
+      </h2>
+      <p class="font-sans text-base lg:text-lg text-text-secondary mt-6 leading-relaxed">
+        Ajustez vos objectifs de volume et estimez votre retour sur investissement avec le système exclusif Wade Studio.
+      </p>
+    </div>
+
+    <!-- Simulator Layout -->
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 max-w-5xl mx-auto items-stretch">
+      
+      <!-- Inputs Column (Left) -->
+      <div class="lg:col-span-7 bg-white border border-slate-100 p-6 lg:p-8 rounded-3xl glass-card-neon shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center space-x-3 mb-8 pb-4 border-b border-slate-100">
+            <Calculator class="h-5 w-5 text-accent-violet" />
+            <h3 class="font-heading text-lg font-normal text-slate-900">Paramètres de simulation</h3>
+          </div>
+
+          <div class="space-y-8">
+            
+            <!-- Input 1: Niche Selection -->
+            <div class="flex flex-col">
+              <label for="roi-niche" class="font-heading text-sm font-semibold text-slate-950 flex justify-between">
+                <span>Votre métier / Secteur d'activité</span>
+                <span class="font-mono text-xs text-accent-violet font-semibold" id="label-project-value">Panier moyen : 8 000€</span>
+              </label>
+              <select id="roi-niche" class="mt-3 block w-full rounded-xl bg-white border border-slate-200 px-4 py-3.5 text-sm font-medium text-slate-800 focus:border-primary-neon focus:outline-none focus:ring-1 focus:ring-primary-neon transition-all duration-200 shadow-sm">
+                {niches.map(n => (
+                  <option value={n.id} data-value={n.projectValue} data-cpl={n.cpl}>
+                    {n.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <!-- Input 2: Lead Volume Slider -->
+            <div class="flex flex-col">
+              <div class="flex justify-between items-center">
+                <label for="roi-volume" class="font-heading text-sm font-semibold text-slate-950">Volume de leads souhaité / mois</label>
+                <span class="font-mono text-lg font-bold text-primary-neon" id="val-volume">20</span>
+              </div>
+              <input 
+                type="range" 
+                id="roi-volume" 
+                min="5" 
+                max="50" 
+                step="5" 
+                value="20" 
+                class="mt-4 w-full cursor-pointer" 
+              />
+              <div class="flex justify-between text-[10px] font-mono text-text-secondary mt-2">
+                <span>5 leads</span>
+                <span>50 leads</span>
+              </div>
+            </div>
+
+            <!-- Input 3: Conversion Rate Slider -->
+            <div class="flex flex-col">
+              <div class="flex justify-between items-center">
+                <label for="roi-closing" class="font-heading text-sm font-semibold text-slate-950">Votre taux de signature estimé</label>
+                <span class="font-mono text-lg font-bold text-accent-violet" id="val-closing">30%</span>
+              </div>
+              <input 
+                type="range" 
+                id="roi-closing" 
+                min="10" 
+                max="50" 
+                step="5" 
+                value="30" 
+                class="mt-4 w-full cursor-pointer" 
+              />
+              <div class="flex justify-between text-[10px] font-mono text-text-secondary mt-2">
+                <span>10% (Classique)</span>
+                <span>30% (Moyen Wade Studio)</span>
+                <span>50% (Excellent)</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        
+        <div class="flex items-start space-x-2.5 mt-8 p-3.5 bg-primary-neon/5 border border-primary-neon/10 rounded-xl">
+          <Info class="h-4 w-4 text-primary-neon shrink-0 mt-0.5" />
+          <p class="font-sans text-[11px] text-text-secondary leading-normal">
+            Le panier moyen et le coût des leads sont calculés en fonction des données historiques du réseau d'artisans.
+          </p>
+        </div>
+      </div>
+
+      <!-- Outputs Column (Right) -->
+      <div class="lg:col-span-5 relative flex flex-col justify-center h-full">
+        <!-- Dashboard Card showing results -->
+        <div class="relative group w-full h-full flex">
+          <div class="relative glass-card-neon-active rounded-3xl p-8 bg-white flex flex-col justify-between overflow-hidden shadow-sm border border-accent-violet w-full">
+            
+            <!-- Result 1: Revenue -->
+            <div class="mb-8">
+              <span class="text-xs font-mono font-semibold text-accent-violet uppercase tracking-wider block">Chiffre d'affaires estimé</span>
+              <div class="flex items-baseline mt-3">
+                <span class="font-heading text-4xl lg:text-5xl font-normal text-slate-900 tracking-tight" id="result-revenue">72 000</span>
+                <span class="font-heading text-2xl font-normal text-slate-900 ml-1">€</span>
+                <span class="text-xs text-text-secondary ml-2">/ mois</span>
+              </div>
+              <p class="text-xs text-text-secondary mt-2" id="result-projects-count">Soit environ 6 chantiers signés par mois.</p>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-slate-100 my-2"></div>
+
+            <!-- Result 2: ROI Badge -->
+            <div class="py-6 flex items-center justify-between">
+              <div>
+                <span class="text-xs font-mono font-semibold text-primary-neon uppercase tracking-wider block">Multiplicateur ROI</span>
+                <span class="text-xs text-text-secondary mt-1 block">Rapport CA généré / Coût</span>
+              </div>
+              <div class="flex items-center space-x-2 bg-primary-neon/5 border border-primary-neon/15 px-4 py-2.5 rounded-xl">
+                <TrendingUp class="h-4 w-4 text-primary-neon" />
+                <span class="font-heading text-lg font-bold text-slate-900 tracking-tight leading-none" id="result-roi">x20.0</span>
+                <span class="font-mono text-[9px] text-primary-neon/70 font-semibold uppercase tracking-wider leading-none">ROI</span>
+              </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-slate-100 my-2"></div>
+
+            <!-- Result 3: Lead cost detail -->
+            <div class="pt-6">
+              <div class="flex justify-between text-xs text-text-secondary">
+                <span>Investissement en leads</span>
+                <span class="font-mono text-primary-neon font-semibold" id="result-cost">3 600 € / mois</span>
+              </div>
+              <div class="flex justify-between text-xs text-text-secondary mt-2">
+                <span>Bénéfice net mensuel estimé</span>
+                <span class="font-mono text-primary-neon font-bold text-lg" id="result-profit">68 400 €</span>
+              </div>
+            </div>
+
+            <!-- Action CTA -->
+            <a href="#availability-checker" class="mt-8 inline-flex h-12 w-full items-center justify-center rounded-xl bg-primary-neon text-sm font-semibold text-white hover:bg-primary-neon/90 transition-colors duration-150 shadow-sm">
+              Saisir l'opportunité dans mon secteur →
+            </a>
+            
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // DOM Elements
+  const nicheSelect = document.getElementById('roi-niche') as HTMLSelectElement;
+  const volumeSlider = document.getElementById('roi-volume') as HTMLInputElement;
+  const closingSlider = document.getElementById('roi-closing') as HTMLInputElement;
+  
+  const valVolume = document.getElementById('val-volume');
+  const valClosing = document.getElementById('val-closing');
+  const labelProjectValue = document.getElementById('label-project-value');
+  
+  const resultRevenue = document.getElementById('result-revenue');
+  const resultProjectsCount = document.getElementById('result-projects-count');
+  const resultRoi = document.getElementById('result-roi');
+  const resultCost = document.getElementById('result-cost');
+  const resultProfit = document.getElementById('result-profit');
+
+  function calculateROI() {
+    if (!nicheSelect || !volumeSlider || !closingSlider) return;
+
+    // Get input values
+    const selectedOption = nicheSelect.options[nicheSelect.selectedIndex];
+    const projectValue = Number(selectedOption.getAttribute('data-value'));
+    const cpl = Number(selectedOption.getAttribute('data-cpl'));
+    
+    const leadsCount = Number(volumeSlider.value);
+    const closingRate = Number(closingSlider.value) / 100;
+
+    // Update slider value labels
+    if (valVolume) valVolume.textContent = leadsCount.toString();
+    if (valClosing) valClosing.textContent = `${Math.round(closingRate * 100)}%`;
+    if (labelProjectValue) labelProjectValue.textContent = `Panier moyen : ${projectValue.toLocaleString()}€`;
+
+    // Calculations
+    const signedProjects = leadsCount * closingRate;
+    const estimatedRevenue = Math.round(signedProjects * projectValue);
+    const estimatedCost = Math.round(leadsCount * cpl);
+    const estimatedProfit = estimatedRevenue - estimatedCost;
+    
+    // ROI multiplier
+    const roiMultiplier = estimatedCost > 0 ? (estimatedRevenue / estimatedCost) : 0;
+
+    // Format display outputs
+    if (resultRevenue) resultRevenue.textContent = estimatedRevenue.toLocaleString();
+    if (resultCost) resultCost.textContent = `${estimatedCost.toLocaleString()} € / mois`;
+    if (resultProfit) resultProfit.textContent = `${estimatedProfit.toLocaleString()} €`;
+    if (resultRoi) resultRoi.textContent = `x${roiMultiplier.toFixed(1)}`;
+    
+    if (resultProjectsCount) {
+      const formattedProjects = signedProjects % 1 === 0 ? signedProjects : signedProjects.toFixed(1);
+      resultProjectsCount.textContent = `Soit environ ${formattedProjects} chantiers signés par mois.`;
+    }
+  }
+
+  // Event Listeners
+  if (nicheSelect) nicheSelect.addEventListener('change', calculateROI);
+  if (volumeSlider) volumeSlider.addEventListener('input', calculateROI);
+  if (closingSlider) closingSlider.addEventListener('input', calculateROI);
+
+  // Initial Calculation
+  calculateROI();
+</script>
