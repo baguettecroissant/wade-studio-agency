@@ -114,6 +114,32 @@
   animation: float-slow 5s ease-in-out infinite;
 }
 
+@keyframes float-medium {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-3deg);
+  }
+}
+
+@keyframes float-fast {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(4deg);
+  }
+}
+
+.animate-float-medium {
+  animation: float-medium 6.5s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float-fast 4.5s ease-in-out infinite;
+}
+
 .animate-rotate-slow {
   animation: rotate-slow 20s linear infinite;
 }

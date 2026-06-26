@@ -5,12 +5,11 @@ import { Heart } from '@lucide/astro';
 
 <footer class="border-t border-slate-200 bg-slate-50 py-12 lg:py-16 relative">
   <!-- Background lights removed for clean editorial style -->
-  
   <div class="container mx-auto max-w-7xl px-6 relative z-10">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10 md:gap-8">
       
       <!-- Brand column -->
-      <div class="md:col-span-2 space-y-4">
+      <div class="sm:col-span-2 space-y-4">
         <a href="/" class="flex items-center space-x-2">
           <img src="/images/wade_studio_logo.png" alt="Wade Studio Logo" class="h-9 w-auto" />
         </a>
@@ -24,35 +23,72 @@ import { Heart } from '@lucide/astro';
         <h4 class="font-heading text-xs font-bold text-slate-900 uppercase tracking-wider mb-4">Navigation</h4>
         <ul class="space-y-2.5 text-xs text-text-secondary">
           <li>
-            <a href="#comparison" class="hover:text-slate-900 transition-colors duration-150">Le Problème</a>
+            <a href="/methode" class="hover:text-slate-900 transition-colors duration-150">Notre Méthode</a>
           </li>
           <li>
-            <a href="#system" class="hover:text-slate-900 transition-colors duration-150">Notre Système</a>
+            <a href="/blog" class="hover:text-slate-900 transition-colors duration-150 font-medium">Blog B2B</a>
           </li>
           <li>
-            <a href="#roi-simulator" class="hover:text-slate-900 transition-colors duration-150">Simulateur ROI</a>
+            <a href="/#roi-simulator" class="hover:text-slate-900 transition-colors duration-150">Simulateur ROI</a>
           </li>
           <li>
-            <a href="#case-studies" class="hover:text-slate-900 transition-colors duration-150">Résultats réels</a>
+            <a href="/#case-studies" class="hover:text-slate-900 transition-colors duration-150">Études de Cas</a>
+          </li>
+          <li>
+            <a href="/candidature" class="hover:text-slate-900 transition-colors duration-150">Tester l'éligibilité</a>
+          </li>
+          <li>
+            <a href="/partenaires" class="hover:text-slate-900 transition-colors duration-150 font-semibold text-primary-neon">Recrutement Artisans (pSEO)</a>
           </li>
         </ul>
       </div>
 
-      <!-- Links column 2: Legal -->
+      <!-- Links column 2 -->
       <div>
-        <h4 class="font-heading text-xs font-bold text-slate-900 uppercase tracking-wider mb-4">Légal & Exclusivité</h4>
+        <h4 class="font-heading text-xs font-bold text-slate-900 uppercase tracking-wider mb-4">Solutions</h4>
         <ul class="space-y-2.5 text-xs text-text-secondary">
           <li>
-            <a href="#availability-checker" class="hover:text-slate-900 transition-colors duration-150">Candidature Exclusivité</a>
+            <a href="/solutions" class="hover:text-slate-900 transition-colors duration-150 font-bold text-[#9A784E]">Hub Solutions (8 niches)</a>
           </li>
+          <li>
+            <a href="/solutions/toiture" class="hover:text-slate-900 transition-colors duration-150">Toiture & Couverture</a>
+          </li>
+          <li>
+            <a href="/solutions/solaire" class="hover:text-slate-900 transition-colors duration-150">Solaire Photovoltaïque</a>
+          </li>
+          <li>
+            <a href="/solutions/pac" class="hover:text-slate-900 transition-colors duration-150">Chauffage & PAC</a>
+          </li>
+          <li>
+            <a href="/solutions/renovation" class="hover:text-slate-900 transition-colors duration-150">Rénovation Globale</a>
+          </li>
+          <li>
+            <a href="/solutions/climatisation" class="hover:text-slate-900 transition-colors duration-150">Climatisation Réversible</a>
+          </li>
+          <li>
+            <a href="/solutions/borne-recharge" class="hover:text-slate-900 transition-colors duration-150">Bornes de Recharge (IRVE)</a>
+          </li>
+          <li>
+            <a href="/solutions/fenetres" class="hover:text-slate-900 transition-colors duration-150">Fenêtres & Menuiseries</a>
+          </li>
+          <li>
+            <a href="/solutions/monte-escalier" class="hover:text-slate-900 transition-colors duration-150">Monte-Escalier PMR</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Links column 3: Legal -->
+      <div>
+        <h4 class="font-heading text-xs font-bold text-slate-900 uppercase tracking-wider mb-4">Légal</h4>
+        <ul class="space-y-2.5 text-xs text-text-secondary">
           <li>
             <a href="/mentions-legales" class="hover:text-slate-900 transition-colors duration-150">Mentions Légales</a>
           </li>
           <li>
-            <a href="/confidentialite" class="hover:text-slate-900 transition-colors duration-150">Politique de Confidentialité</a>
+            <a href="/confidentialite" class="hover:text-slate-900 transition-colors duration-150">Confidentialité</a>
           </li>
           <li>
-            <a href="/conditions" class="hover:text-slate-900 transition-colors duration-150">Conditions Générales (CGV)</a>
+            <a href="/conditions" class="hover:text-slate-900 transition-colors duration-150">Conditions (CGV)</a>
           </li>
         </ul>
       </div>

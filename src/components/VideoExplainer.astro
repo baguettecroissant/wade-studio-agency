@@ -1,0 +1,81 @@
+---
+// VideoExplainer component
+import { Play } from '@lucide/astro';
+---
+
+<section id="explainer-video" class="py-20 lg:py-28 bg-[#FBF9F6]/30 border-b border-slate-100 relative">
+  <!-- Subtle editorial layout grid matching the website's theme -->
+  <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.01)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none z-0"></div>
+
+  <div class="container mx-auto max-w-5xl px-6 relative z-10">
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
+      <span class="font-mono text-xs font-semibold text-primary-neon uppercase tracking-widest bg-primary-neon/5 border border-primary-neon/15 px-3.5 py-1.5 rounded-full">
+        Présentation Vidéo
+      </span>
+      <h2 class="font-heading text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl mt-6">
+        Comment Wade Studio <span class="gradient-text-editorial">propulse votre entreprise</span>
+      </h2>
+      <p class="font-sans text-base text-text-secondary mt-4 leading-relaxed max-w-2xl mx-auto">
+        Découvrez en 2 minutes comment nous déployons nos portails locaux exclusifs et comment vous recevez des demandes de devis qualifiées directement sur votre téléphone.
+      </p>
+    </div>
+
+    <!-- Video Player Box -->
+    <div class="max-w-4xl mx-auto">
+      <div class="relative rounded-3xl overflow-hidden p-2 bg-white border border-slate-200/80 shadow-2xl transition-all duration-300 hover:border-[#9A784E]/30">
+        <div class="relative aspect-video rounded-2xl overflow-hidden bg-slate-950">
+          <video
+            id="explainer-video-player"
+            class="w-full h-full object-cover"
+            preload="metadata"
+            playsinline
+          >
+            <source src="/videos/wade_studio_explication.mp4" type="video/mp4" />
+            Votre navigateur ne prend pas en charge la lecture de cette vidéo.
+          </video>
+          
+          <!-- Custom Play Overlay -->
+          <button
+            id="video-play-overlay"
+            class="absolute inset-0 w-full h-full flex flex-col items-center justify-center bg-slate-950/30 backdrop-blur-[1px] transition-all duration-300 hover:bg-slate-950/20 cursor-pointer focus:outline-none"
+            aria-label="Lancer la vidéo explicative"
+          >
+            <div class="h-20 w-20 rounded-full bg-primary-neon/90 text-white flex items-center justify-center shadow-lg border border-white/20 hover:scale-110 hover:bg-[#9A784E] transition-all duration-300">
+              <Play class="h-8 w-8 text-white fill-white translate-x-0.5" />
+            </div>
+            <span class="mt-4 font-mono text-[10px] font-bold text-white uppercase tracking-widest bg-slate-950/60 border border-white/10 px-3 py-1.5 rounded-lg backdrop-blur-md shadow-sm">
+              Lancer la présentation • 2 min
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const video = document.getElementById('explainer-video-player') as HTMLVideoElement;
+  const overlay = document.getElementById('video-play-overlay');
+
+  if (video && overlay) {
+    // Hide native controls initially
+    video.controls = false;
+
+    overlay.addEventListener('click', () => {
+      video.play().then(() => {
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        // Enable controls once playing
+        video.controls = true;
+      }).catch((err) => {
+        console.error("Play failed:", err);
+      });
+    });
+
+    video.addEventListener('ended', () => {
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      video.controls = false;
+      video.load(); // Reset to beginning/first frame
+    });
+  }
+</script>

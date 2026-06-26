@@ -1,0 +1,227 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+import { Zap, MapPin, Calendar, BarChart3, ArrowRight, ShieldCheck, Sparkles, AlertCircle } from '@lucide/astro';
+---
+
+<Layout 
+  title="Solution Installation Bornes de Recharge IRVE - Wade Studio" 
+  description="Exclusivité locale pour électriciens certifiés IRVE. Obtenez 100% de demandes de pose de bornes de recharge et wallbox résidentielles dans votre département."
+>
+  <div class="py-16 lg:py-24 relative overflow-hidden bg-[#FBF9F6]/50 font-sans">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_100%,#000_70%,transparent_100%)] pointer-events-none z-0"></div>
+    
+    <div class="container mx-auto max-w-6xl px-6 relative z-10">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center space-x-2 text-xs text-text-secondary mb-8">
+        <a href="/" class="hover:text-slate-900 transition-colors">Accueil</a>
+        <span>/</span>
+        <a href="/solutions" class="hover:text-slate-900 transition-colors">Solutions</a>
+        <span>/</span>
+        <span class="text-primary-neon font-semibold">Bornes de Recharge</span>
+      </nav>
+
+      <!-- Main Columns -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        
+        <!-- Left: Copy -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center space-x-2 rounded-full border border-primary-neon/15 bg-primary-neon/5 px-3 py-1">
+            <Zap class="h-4 w-4 text-primary-neon animate-pulse" />
+            <span class="font-mono text-[10px] font-bold text-primary-neon uppercase tracking-wider">Électriciens certifiés IRVE</span>
+          </div>
+          
+          <h1 class="font-heading text-4xl font-normal text-slate-900 sm:text-5xl leading-tight">
+            Captez la demande locale pour l'installation de <span class="gradient-text-editorial">bornes de recharge électriques</span>
+          </h1>
+          
+          <p class="text-sm text-text-secondary leading-relaxed max-w-xl">
+            Ne perdez plus votre temps à chercher des propriétaires de véhicules électriques. Wade Studio déploie des portails d'acquisition locaux exclusifs pour vous mettre en relation avec les foyers installant des wallbox résidentielles.
+          </p>
+
+          <div class="grid grid-cols-2 gap-6 pt-4 border-t border-slate-200/80">
+            <div>
+              <span class="block text-2xl font-mono font-bold text-slate-900">+70 leads</span>
+              <span class="text-xs text-text-secondary mt-1 block">Volume moyen sur 2 mois</span>
+            </div>
+            <div>
+              <span class="block text-2xl font-mono font-bold text-emerald-600">+12k €</span>
+              <span class="text-xs text-text-secondary mt-1 block">CA Partenaire moyen</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Vertical Story Video -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="w-[280px] h-[480px] rounded-3xl overflow-hidden relative shadow-xl border border-slate-200/60 bg-slate-950">
+            <video 
+              autoplay 
+              loop 
+              muted 
+              playsinline 
+              poster="/images/artisan_borne_recharge.png"
+              class="absolute inset-0 w-full h-full object-cover opacity-85"
+            >
+              <source src="https://assets.mixkit.co/videos/preview/mixkit-worker-installing-solar-panels-on-a-roof-41561-large.mp4" type="video/mp4" />
+            </video>
+            <!-- Overlays -->
+            <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/85 via-black/40 to-transparent pointer-events-none"></div>
+            <div class="absolute inset-x-0 bottom-6 px-5 text-white">
+              <span class="text-[9px] font-mono font-bold uppercase tracking-wider text-accent-violet">Démonstration Live</span>
+              <h3 class="font-heading text-base font-bold text-white mt-1">Réseau Nord (59)</h3>
+              <p class="text-xs text-stone-200 mt-1 flex items-center space-x-1.5">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>+3 installations validées aujourd'hui</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Detailed Case Study / Proof Section -->
+  <section class="py-20 bg-white font-sans border-t border-slate-100">
+    <div class="container mx-auto max-w-4xl px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-heading text-3xl font-normal text-slate-900">Preuve de performance en direct du Nord (59)</h2>
+        <p class="text-xs text-text-secondary mt-3">Analyse des flux réels et rapports Google Search Console de notre portail partenaire.</p>
+      </div>
+
+      <!-- Case study details card -->
+      <div class="glass-card-neon rounded-3xl border border-slate-200/60 p-6 md:p-10 shadow-sm">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 pb-6 mb-8 gap-4">
+          <div class="flex items-center space-x-3.5">
+            <div class="h-10 w-10 rounded-xl bg-primary-neon/5 border border-primary-neon/10 flex items-center justify-center text-primary-neon">
+              <MapPin class="h-5 w-5" />
+            </div>
+            <div>
+              <h3 class="font-heading text-lg font-bold text-slate-900 leading-none">Nord (59)</h3>
+              <span class="text-xs text-text-secondary mt-1 block">Bornes de Recharge Électrique</span>
+            </div>
+          </div>
+          <span class="bg-emerald-500/5 border border-emerald-500/10 px-3 py-1 rounded-full text-[9px] font-mono font-bold text-emerald-700 uppercase tracking-wider">Actif / Monopole</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div class="space-y-4">
+            <h4 class="font-heading text-base font-bold text-slate-900">Le partenariat Wade Studio :</h4>
+            <ul class="space-y-3 text-xs text-text-secondary">
+              <li class="flex items-start space-x-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-primary-neon shrink-0 mt-1.5"></span>
+                <span>Position 1.3 moyenne sur Google pour 'Installateur borne Lille', 'Electricien IRVE Nord'.</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-primary-neon shrink-0 mt-1.5"></span>
+                <span>Fiches qualifiées avec type de véhicule, puissance (7kW, 11kW, 22kW), et distance du tableau électrique.</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <span class="h-1.5 w-1.5 rounded-full bg-primary-neon shrink-0 mt-1.5"></span>
+                <span>Taux de conversion moyen de 50% grâce au positionnement exclusif (sans mise en concurrence).</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- GSC Graphic -->
+          <div class="relative rounded-2xl border border-slate-200 overflow-hidden bg-slate-50/80 p-4 h-44 flex flex-col justify-between shadow-inner">
+            <div class="flex justify-between items-center z-10 text-[9px] font-mono text-text-secondary">
+              <span class="flex items-center space-x-1"><BarChart3 class="h-3.5 w-3.5 text-primary-neon" /><span>Google Search Console</span></span>
+              <span>2 Mois</span>
+            </div>
+            <div class="absolute inset-x-0 bottom-4 h-28 px-2 select-none">
+              <svg viewBox="0 0 300 100" class="w-full h-full" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="chartGradZap" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#0B3C2E" stop-opacity="0.1" />
+                    <stop offset="100%" stop-color="#0B3C2E" stop-opacity="0.0" />
+                  </linearGradient>
+                </defs>
+                <path d="M0,82 Q30,72 60,55 T120,48 T180,28 T240,12 T300,4 L300,100 L0,100 Z" fill="url(#chartGradZap)" />
+                <path d="M0,82 Q30,72 60,55 T120,48 T180,28 T240,12 T300,4" fill="none" stroke="#0B3C2E" stroke-width="2" />
+                <circle cx="300" cy="4" r="4" fill="#0B3C2E" />
+              </svg>
+            </div>
+            <div class="absolute inset-0 bg-white/10 backdrop-blur-[1px] flex items-center justify-center rounded-2xl m-1.5">
+              <div class="bg-white border border-slate-200 px-3 py-1 rounded-lg shadow-sm text-[9px] font-mono text-text-secondary">
+                Données de clics organiques vérifiées
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section (SEO Long-Tail) -->
+  <section class="py-20 bg-slate-50 border-t border-slate-100 font-sans">
+    <div class="container mx-auto max-w-3xl px-6">
+      <h2 class="font-heading text-2xl font-normal text-slate-900 text-center mb-12">Questions fréquentes - Installation de Bornes IRVE</h2>
+      <div class="space-y-6">
+        <div class="bg-white border border-slate-200/60 p-5 rounded-xl">
+          <h3 class="font-heading text-sm font-bold text-slate-900">Qu'est-ce que la qualification IRVE ?</h3>
+          <p class="text-xs text-text-secondary mt-2">
+            La mention IRVE (Infrastructure de Recharge pour Véhicule Électrique) est une certification obligatoire pour tout électricien installant des bornes de recharge d'une puissance supérieure à 3.7 kW. Elle conditionne l'accès aux subventions de l'État.
+          </p>
+        </div>
+        <div class="bg-white border border-slate-200/60 p-5 rounded-xl">
+          <h3 class="font-heading text-sm font-bold text-slate-900">À quelles aides mes clients ont-ils droit pour une borne ?</h3>
+          <p class="text-xs text-text-secondary mt-2">
+            Les particuliers peuvent bénéficier d'un crédit d'impôt allant jusqu'à 500 € par borne, d'un taux de TVA réduit à 5.5%, et de la prime ADVENIR (notamment pour les copropriétés ou entreprises).
+          </p>
+        </div>
+        <div class="bg-white border border-slate-200/60 p-5 rounded-xl">
+          <h3 class="font-heading text-sm font-bold text-slate-900">Quelle est la puissance moyenne des bornes installées en résidentiel ?</h3>
+          <p class="text-xs text-text-secondary mt-2">
+            En maison individuelle, la majorité des wallbox installées sont d'une puissance de 7.4 kW (monophasé) ou de 11 kW à 22 kW (triphasé), permettant une recharge complète en 4 à 8 heures.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Semantic Cocoon Cross-linking Section -->
+  <section class="py-12 bg-white border-t border-slate-100 font-sans">
+    <div class="container mx-auto max-w-4xl px-6">
+      <h3 class="font-heading text-xs font-bold text-[#9A784E] uppercase tracking-wider mb-6 text-center">Solutions connexes suggérées :</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <a href="/solutions/solaire" class="border border-slate-200/60 p-4 rounded-xl flex items-center justify-between hover:border-primary-neon/20 hover:shadow-sm transition-all group">
+          <div>
+            <span class="font-heading text-xs font-bold text-slate-900">Solaire Photovoltaïque</span>
+            <span class="block text-[10px] text-text-secondary mt-0.5">Associez recharge électrique et autoconsommation solaire</span>
+          </div>
+          <ArrowRight class="h-4 w-4 text-text-secondary group-hover:text-primary-neon transition-colors" />
+        </a>
+        <a href="/solutions/pac" class="border border-slate-200/60 p-4 rounded-xl flex items-center justify-between hover:border-primary-neon/20 hover:shadow-sm transition-all group">
+          <div>
+            <span class="font-heading text-xs font-bold text-slate-900">Chauffage & Pompe à Chaleur (PAC)</span>
+            <span class="block text-[10px] text-text-secondary mt-0.5">Optimisez le bilan énergétique global du foyer</span>
+          </div>
+          <ArrowRight class="h-4 w-4 text-text-secondary group-hover:text-primary-neon transition-colors" />
+        </a>
+      </div>
+      <div class="text-center mt-10">
+        <a href="/solutions" class="text-xs text-primary-neon font-bold hover:underline">
+          ← Retourner au répertoire des solutions
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-[#FBF9F6]/50 border-t border-slate-100 font-sans">
+    <div class="container mx-auto max-w-3xl px-6 text-center">
+      <h3 class="font-heading text-2xl font-normal text-slate-900">Obtenez l'exclusivité des leads Bornes de Recharge sur votre secteur</h3>
+      <p class="font-sans text-xs text-text-secondary mt-2">Nous ne prenons qu'un seul électricien IRVE partenaire par département. Rejoignez notre réseau avant votre concurrent.</p>
+      <div class="mt-8">
+        <a href="/candidature" class="inline-flex h-12 items-center justify-center rounded-xl bg-primary-neon hover:bg-primary-neon/90 hover:scale-[1.01] active:scale-[0.99] px-6 text-sm font-bold text-white transition-all duration-200 shadow-md">
+          Vérifier la disponibilité de mon secteur <ArrowRight class="ml-2 h-4 w-4" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

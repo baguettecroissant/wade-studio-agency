@@ -1,6 +1,6 @@
 ---
 // AvailabilityForm component
-import { ShieldCheck, ArrowRight, ArrowLeft, Send, CheckCircle2, Lock, Flame, Hammer, Sun, Home } from '@lucide/astro';
+import { ShieldCheck, ArrowRight, ArrowLeft, Send, CheckCircle2, Lock, Flame, Hammer, Sun, Home, Wind, Zap, Maximize, ArrowUpRight } from '@lucide/astro';
 ---
 
 <section id="availability-checker" class="py-20 lg:py-32 relative border-t border-slate-100 bg-[#FBF9F6]/50">
@@ -92,6 +92,54 @@ import { ShieldCheck, ArrowRight, ArrowLeft, Send, CheckCircle2, Lock, Flame, Ha
                 </div>
                 <span class="ml-4 font-heading text-sm font-semibold text-text-secondary peer-checked:text-slate-900 group-hover:text-slate-950 transition-colors duration-200">
                   Rénovation Générale
+                </span>
+              </label>
+
+              <!-- Option Climatisation -->
+              <label class="relative flex items-center p-4 rounded-xl border border-slate-200 bg-white cursor-pointer hover:border-primary-neon/20 hover:bg-primary-neon/5 transition-all duration-200 select-none group shadow-sm">
+                <input type="radio" name="niche" value="Climatisation Réversible" class="sr-only peer" />
+                <div class="absolute inset-0 border border-primary-neon rounded-xl opacity-0 peer-checked:opacity-100 transition-opacity duration-150 pointer-events-none"></div>
+                <div class="h-10 w-10 rounded-lg bg-primary-neon/5 border border-primary-neon/10 flex items-center justify-center text-primary-neon shrink-0 group-hover:scale-105 transition-transform duration-200">
+                  <Wind class="h-5 w-5" />
+                </div>
+                <span class="ml-4 font-heading text-sm font-semibold text-text-secondary peer-checked:text-slate-900 group-hover:text-slate-950 transition-colors duration-200">
+                  Climatisation Réversible
+                </span>
+              </label>
+
+              <!-- Option Bornes -->
+              <label class="relative flex items-center p-4 rounded-xl border border-slate-200 bg-white cursor-pointer hover:border-accent-violet/20 hover:bg-accent-violet/5 transition-all duration-200 select-none group shadow-sm">
+                <input type="radio" name="niche" value="Bornes de Recharge (IRVE)" class="sr-only peer" />
+                <div class="absolute inset-0 border border-accent-violet rounded-xl opacity-0 peer-checked:opacity-100 transition-opacity duration-150 pointer-events-none"></div>
+                <div class="h-10 w-10 rounded-lg bg-accent-violet/5 border border-accent-violet/10 flex items-center justify-center text-accent-violet shrink-0 group-hover:scale-105 transition-transform duration-200">
+                  <Zap class="h-5 w-5" />
+                </div>
+                <span class="ml-4 font-heading text-sm font-semibold text-text-secondary peer-checked:text-slate-900 group-hover:text-slate-950 transition-colors duration-200">
+                  Bornes de Recharge (IRVE)
+                </span>
+              </label>
+
+              <!-- Option Fenêtres -->
+              <label class="relative flex items-center p-4 rounded-xl border border-slate-200 bg-white cursor-pointer hover:border-primary-neon/20 hover:bg-primary-neon/5 transition-all duration-200 select-none group shadow-sm">
+                <input type="radio" name="niche" value="Fenêtres & Menuiseries" class="sr-only peer" />
+                <div class="absolute inset-0 border border-primary-neon rounded-xl opacity-0 peer-checked:opacity-100 transition-opacity duration-150 pointer-events-none"></div>
+                <div class="h-10 w-10 rounded-lg bg-primary-neon/5 border border-primary-neon/10 flex items-center justify-center text-primary-neon shrink-0 group-hover:scale-105 transition-transform duration-200">
+                  <Maximize class="h-5 w-5" />
+                </div>
+                <span class="ml-4 font-heading text-sm font-semibold text-text-secondary peer-checked:text-slate-900 group-hover:text-slate-950 transition-colors duration-200">
+                  Fenêtres & Menuiseries
+                </span>
+              </label>
+
+              <!-- Option Monte-Escalier -->
+              <label class="relative flex items-center p-4 rounded-xl border border-slate-200 bg-white cursor-pointer hover:border-accent-violet/20 hover:bg-accent-violet/5 transition-all duration-200 select-none group shadow-sm">
+                <input type="radio" name="niche" value="Monte-Escalier PMR" class="sr-only peer" />
+                <div class="absolute inset-0 border border-accent-violet rounded-xl opacity-0 peer-checked:opacity-100 transition-opacity duration-150 pointer-events-none"></div>
+                <div class="h-10 w-10 rounded-lg bg-accent-violet/5 border border-accent-violet/10 flex items-center justify-center text-accent-violet shrink-0 group-hover:scale-105 transition-transform duration-200">
+                  <ArrowUpRight class="h-5 w-5" />
+                </div>
+                <span class="ml-4 font-heading text-sm font-semibold text-text-secondary peer-checked:text-slate-900 group-hover:text-slate-950 transition-colors duration-200">
+                  Monte-Escalier PMR
                 </span>
               </label>
             </div>
@@ -273,6 +321,38 @@ import { ShieldCheck, ArrowRight, ArrowLeft, Send, CheckCircle2, Lock, Flame, Ha
 
   let currentStep = 1;
 
+  // Query parameters pre-fill logic
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const preNiche = urlParams.get('niche');
+    const preDept = urlParams.get('dept');
+
+    if (preNiche) {
+      const nicheMap = {
+        'toiture': 'Toiture & Couverture',
+        'solaire': 'Solaire Photovoltaïque',
+        'pac': 'Pompe à Chaleur',
+        'renovation': 'Rénovation Générale',
+        'climatisation': 'Climatisation Réversible',
+        'borne-recharge': 'Bornes de Recharge (IRVE)',
+        'fenetres': 'Fenêtres & Menuiseries',
+        'monte-escalier': 'Monte-Escalier PMR'
+      };
+      const targetVal = nicheMap[preNiche.toLowerCase()];
+      if (targetVal) {
+        const radio = form?.querySelector(`input[name="niche"][value="${targetVal}"]`) as HTMLInputElement;
+        if (radio) radio.checked = true;
+      }
+    }
+
+    if (preDept && zipInput) {
+      zipInput.value = preDept;
+      if (zipCharCount) zipCharCount.textContent = `${preDept.length}/5`;
+    }
+  } catch (e) {
+    console.error('Error prefilling form:', e);
+  }
+
   // Track zip character typing
   if (zipInput && zipCharCount) {
     zipInput.addEventListener('input', () => {
@@ -328,9 +408,14 @@ import { ShieldCheck, ArrowRight, ArrowLeft, Send, CheckCircle2, Lock, Flame, Ha
       step3?.classList.add('hidden');
       
       btnBack?.classList.add('hidden');
+      btnBack?.classList.remove('inline-flex');
       btnBackSpacer?.classList.remove('hidden');
+      
       btnNext?.classList.remove('hidden');
+      btnNext?.classList.add('inline-flex');
+      
       btnSubmit?.classList.add('hidden');
+      btnSubmit?.classList.remove('inline-flex');
       
       if (stepLabel) stepLabel.textContent = "Étape 1 sur 3";
       if (stepPercent) stepPercent.textContent = "33%";
@@ -342,9 +427,14 @@ import { ShieldCheck, ArrowRight, ArrowLeft, Send, CheckCircle2, Lock, Flame, Ha
       step3?.classList.add('hidden');
       
       btnBack?.classList.remove('hidden');
+      btnBack?.classList.add('inline-flex');
       btnBackSpacer?.classList.add('hidden');
+      
       btnNext?.classList.remove('hidden');
+      btnNext?.classList.add('inline-flex');
+      
       btnSubmit?.classList.add('hidden');
+      btnSubmit?.classList.remove('inline-flex');
       
       if (stepLabel) stepLabel.textContent = "Étape 2 sur 3";
       if (stepPercent) stepPercent.textContent = "66%";
@@ -356,9 +446,14 @@ import { ShieldCheck, ArrowRight, ArrowLeft, Send, CheckCircle2, Lock, Flame, Ha
       step3?.classList.remove('hidden');
       
       btnBack?.classList.remove('hidden');
+      btnBack?.classList.add('inline-flex');
       btnBackSpacer?.classList.add('hidden');
+      
       btnNext?.classList.add('hidden');
+      btnNext?.classList.remove('inline-flex');
+      
       btnSubmit?.classList.remove('hidden');
+      btnSubmit?.classList.add('inline-flex');
       
       if (stepLabel) stepLabel.textContent = "Étape 3 sur 3";
       if (stepPercent) stepPercent.textContent = "95%";
@@ -457,4 +552,7 @@ import { ShieldCheck, ArrowRight, ArrowLeft, Send, CheckCircle2, Lock, Flame, Ha
       }
     });
   }
+
+  // Initialize wizard button display on page load
+  updateWizardUI();
 </script>

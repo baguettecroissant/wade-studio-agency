@@ -1,0 +1,302 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+import { articles } from '../../data/blog.js';
+
+// Generate static paths for each article slug
+export function getStaticPaths() {
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article }
+  }));
+}
+
+const { article } = Astro.props;
+
+// SEO meta values
+const seoTitle = `${article.title} | Blog Wade Studio`;
+const seoDescription = article.metaDescription || article.summary;
+---
+
+<Layout title={seoTitle} description={seoDescription}>
+  <!-- Breadcrumb & Back Link -->
+  <nav class="bg-[#FBF9F6] pt-24 pb-4 border-b border-slate-100">
+    <div class="container mx-auto max-w-4xl px-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-text-secondary">
+      <a href="/blog" class="inline-flex items-center space-x-1.5 hover:text-slate-900 font-semibold transition-colors">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+        </svg>
+        <span>Retour au blog</span>
+      </a>
+
+      <!-- Breadcrumbs -->
+      <div class="flex items-center space-x-2 font-mono text-[10px]">
+        <a href="/" class="hover:text-slate-950">Accueil</a>
+        <span>/</span>
+        <a href="/blog" class="hover:text-slate-950">Blog</a>
+        <span>/</span>
+        <span class="text-[#0B3C2E] font-bold">{article.category}</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Editorial Article Header -->
+  <header class="bg-[#FBF9F6] py-12 md:py-16 border-b border-slate-100 relative overflow-hidden">
+    <div class="container mx-auto max-w-4xl px-6 relative z-10">
+      <div class="text-center sm:text-left">
+        <!-- Category tag -->
+        <span class="px-3 py-1 rounded-full bg-[#0B3C2E]/5 text-[#0B3C2E] text-xs font-bold uppercase tracking-wider">
+          {article.category}
+        </span>
+        
+        <!-- Main title -->
+        <h1 class="font-heading text-3xl sm:text-4xl md:text-5xl font-normal text-slate-900 mt-6 leading-tight max-w-3xl">
+          {article.title}
+        </h1>
+
+        <!-- Reading time and date -->
+        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-4 mt-6 text-xs text-text-secondary font-mono">
+          <span>Publié le {article.date}</span>
+          <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+          <span>Temps de lecture : {article.readTime}</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Article Body -->
+  <section class="py-12 md:py-20 bg-[#FBF9F6]">
+    <div class="container mx-auto max-w-4xl px-6">
+      <!-- Article Cover Image -->
+      <div class="relative w-full aspect-video sm:aspect-[21/9] rounded-2xl overflow-hidden mb-12 border border-slate-200/80 shadow-md">
+        <img 
+          src={article.coverImage} 
+          alt={article.title} 
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Left Column: Body Content (Editorial typography) -->
+        <div class="lg:col-span-8">
+          <div class="blog-body font-sans text-[15px] text-text-primary leading-relaxed space-y-6">
+            <!-- Render HTML content directly -->
+            <Fragment set:html={article.content} />
+          </div>
+
+          <!-- Divider -->
+          <div class="border-t border-slate-200 my-12"></div>
+
+          <!-- Share section / Article Footer -->
+          <div class="flex items-center justify-between text-xs text-text-secondary">
+            <div class="flex items-center space-x-2">
+              <span class="font-bold">Sujet :</span>
+              <span class="font-mono text-[#9A784E]">{article.category}</span>
+            </div>
+            <button 
+              id="share-btn" 
+              class="inline-flex items-center space-x-1.5 hover:text-slate-950 font-bold transition-colors cursor-pointer"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 10.742l4.764-2.285M8.684 12.742l4.764 2.285M8.684 13.5A3.5 3.5 0 115.5 10a3.5 3.5 0 013.184 3.5z" />
+              </svg>
+              <span>Partager l'article</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: B2B Sidebar Sticky CTA -->
+        <div class="lg:col-span-4">
+          <div class="sticky top-28 space-y-6">
+            <!-- Main conversion widget -->
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-md relative overflow-hidden">
+              <!-- Visual Accent line -->
+              <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#0B3C2E] to-[#9A784E]"></div>
+
+              <span class="font-mono text-[9px] font-bold text-accent-violet uppercase tracking-wider block mb-2">Monopole Local</span>
+              <h3 class="font-heading text-lg font-normal text-slate-900 leading-tight">Générez vos propres leads</h3>
+              <p class="font-sans text-xs text-text-secondary mt-3 leading-relaxed">
+                Ne louez plus vos clients aux géants de la mise en relation. Sécurisez l'exclusivité absolue de votre spécialité dans votre département.
+              </p>
+
+              <!-- Quick Bullet list -->
+              <ul class="mt-5 space-y-2.5 text-xs text-text-primary">
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-[#0B3C2E] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>100% Exclusif (zéro concurrence)</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-[#0B3C2E] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Prix fixe garanti (sans hausse publicitaire)</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <svg class="w-4 h-4 text-[#0B3C2E] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Actifs positionnés et prêts à livrer</span>
+                </li>
+              </ul>
+
+              <!-- Action button -->
+              <a 
+                href="/candidature" 
+                class="mt-6 w-full inline-flex h-11 items-center justify-center rounded-xl bg-[#0B3C2E] text-xs font-bold text-white shadow-md hover:bg-[#082E23] transition-colors"
+              >
+                Tester notre éligibilité locale
+              </a>
+            </div>
+
+            <!-- Alternative / Secondary Info block -->
+            <div class="rounded-2xl border border-slate-100 bg-slate-50 p-5 text-xs text-text-secondary leading-relaxed">
+              <h4 class="font-bold text-slate-900 mb-2">Comment fonctionne notre partenariat ?</h4>
+              <p>Nous construisons et positionnons des actifs de recherche sur Google. Une fois actifs, nous les mettons à disposition d'un unique artisan par zone. Pas de mauvaise surprise, vous recevez les appels en direct.</p>
+              <a href="/methode" class="block font-bold text-[#0B3C2E] hover:underline mt-2">En savoir plus sur la méthode →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Large bottom Banner CTA -->
+  <section class="py-20 bg-slate-900 text-white border-t border-slate-800 text-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(154,120,78,0.08),transparent_50%)] pointer-events-none"></div>
+    <div class="container mx-auto max-w-4xl px-6 relative z-10">
+      <span class="font-mono text-[10px] font-bold text-accent-violet uppercase tracking-wider">Candidature Partenaire</span>
+      <h2 class="font-heading text-3xl font-normal mt-4 leading-tight">Devenez l'artisan référent de votre région</h2>
+      <p class="text-sm text-slate-300 max-w-md mx-auto mt-3">
+        Vérifiez en quelques clics si votre spécialité est encore disponible et sécurisez votre canal d'acquisition direct.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/candidature" class="inline-flex h-12 items-center justify-center rounded-xl bg-primary-neon px-8 text-sm font-bold text-white shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all">
+          Lancer le test d'éligibilité
+        </a>
+        <a href="/blog" class="text-xs font-bold text-slate-300 hover:text-white underline underline-offset-4">
+          Retourner aux articles de blog
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<!-- Copywriting & Editorial styling classes for rich content rendering -->
+<style is:global>
+  .blog-body h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #0F172A;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .blog-body h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #1E293B;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .blog-body p {
+    color: #44403C;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+  .blog-body strong {
+    color: #0F172A;
+    font-weight: 600;
+  }
+  .blog-body blockquote {
+    border-left: 3px solid #9A784E;
+    padding-left: 1.25rem;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #57534E;
+    margin: 2rem 0;
+    line-height: 1.6;
+  }
+  .blog-body ul {
+    list-style-type: none;
+    padding-left: 0.5rem;
+    margin-bottom: 1.5rem;
+    space-y: 2;
+  }
+  .blog-body ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #44403C;
+  }
+  .blog-body ul li::before {
+    content: "•";
+    color: #9A784E;
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0.25rem;
+    top: -0.1rem;
+  }
+  .blog-body ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .blog-body ol li {
+    margin-bottom: 0.5rem;
+    color: #44403C;
+    padding-left: 0.25rem;
+  }
+  .blog-body table {
+    width: 100%;
+    margin: 2rem 0;
+    border-collapse: collapse;
+  }
+  .blog-body th {
+    background-color: #F1F5F9;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    border: 1px solid #E2E8F0;
+  }
+  .blog-body td {
+    padding: 0.75rem 1rem;
+    border: 1px solid #E2E8F0;
+  }
+</style>
+
+<script>
+  // Simple copy link share functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const shareBtn = document.getElementById('share-btn');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(window.location.href)
+          .then(() => {
+            const originalText = shareBtn.innerHTML;
+            shareBtn.innerHTML = `
+              <svg class="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-emerald-600 font-bold">Lien copié !</span>
+            `;
+            setTimeout(() => {
+              shareBtn.innerHTML = originalText;
+            }, 2000);
+          })
+          .catch(err => {
+            console.error('Erreur lors de la copie du lien :', err);
+          });
+      });
+    }
+  });
+</script>

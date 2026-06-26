@@ -1,0 +1,246 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+import { 
+  Home, Sun, Flame, Wrench, Wind, Zap, LayoutGrid, ArrowRight, 
+  MapPin, CheckCircle2, ChevronRight, HelpCircle
+} from '@lucide/astro';
+
+const solutions = [
+  {
+    title: "Toiture & Couverture",
+    slug: "toiture",
+    description: "Infrastructures d'acquisition de chantiers de rénovation de toiture, charpente, nettoyage et étanchéité.",
+    icon: Home,
+    stats: { volume: "+120 leads/trimestre", sign: "54%" },
+    keywords: ["couvreur nice", "devis toiture 06", "nettoyage toiture var"],
+    hasPage: true
+  },
+  {
+    title: "Solaire Photovoltaïque",
+    slug: "solaire",
+    description: "Génération de demandes d'installations de panneaux photovoltaïques et autoconsommation résidentielle.",
+    icon: Sun,
+    stats: { volume: "+85 leads/bimestre", sign: "48%" },
+    keywords: ["panneaux solaires gironde", "installateur photovoltaique 83", "devis solaire toulouse"],
+    hasPage: true
+  },
+  {
+    title: "Chauffage & Pompe à Chaleur",
+    slug: "pac",
+    description: "Demandes qualifiées d'installations de pompes à chaleur (PAC) air-eau, air-air et chaudières biomasse.",
+    icon: Flame,
+    stats: { volume: "+95 leads/trimestre", sign: "48%" },
+    keywords: ["installateur pac bordeaux", "chauffage rge gironde", "pompe a chaleur lyon"],
+    hasPage: true
+  },
+  {
+    title: "Rénovation Globale & RGE",
+    slug: "renovation",
+    description: "Acquisition de chantiers à forte valeur ajoutée combinant isolation des murs, combles et bouquets de travaux.",
+    icon: Wrench,
+    stats: { volume: "+60 leads/trimestre", sign: "52%" },
+    keywords: ["renovation rge lyon", "audit energetique rhone", "isolation thermique 69"],
+    hasPage: true
+  },
+  {
+    title: "Climatisation Réversible",
+    slug: "climatisation",
+    description: "Portails d'acquisition locaux pour la pose de climatisations réversibles (PAC air-air) été comme hiver.",
+    icon: Wind,
+    stats: { volume: "+80 leads/mois", sign: "46%" },
+    keywords: ["climatisation marseille", "devis clim réversible 13", "pose climatisation toulon"],
+    hasPage: true
+  },
+  {
+    title: "Borne de Recharge Électrique",
+    slug: "borne-recharge",
+    description: "Capture de leads qualifiés IRVE pour l'installation de bornes de recharge et wallbox résidentielles.",
+    icon: Zap,
+    stats: { volume: "+70 leads/mois", sign: "50%" },
+    keywords: ["installateur borne lille", "electricien irve nord", "pose wallbox lyon"],
+    hasPage: true
+  },
+  {
+    title: "Fenêtres & Menuiseries",
+    slug: "candidature",
+    description: "Demandes de remplacement de fenêtres, double vitrage, volets roulants et menuiseries extérieures RGE.",
+    icon: LayoutGrid,
+    stats: { volume: "+110 leads/trimestre", sign: "45%" },
+    keywords: ["devis menuiserie nantes", "pose fenetre double vitrage 44", "installateur rge fenetres"],
+    hasPage: false
+  },
+  {
+    title: "Monte-Escalier Électrique",
+    slug: "candidature",
+    description: "Capture exclusive de prospects qualifiés pour l'installation de monte-escaliers droits ou tournants.",
+    icon: HelpCircle,
+    stats: { volume: "+50 leads/trimestre", sign: "51%" },
+    keywords: ["monte escalier nice", "pose monte escalier 06", "tarif monte escalier var"],
+    hasPage: false
+  }
+];
+---
+
+<Layout 
+  title="Nos Solutions d'Acquisition BTP & Énergie - Wade Studio" 
+  description="Découvrez nos portails locaux et nos solutions exclusives d'acquisition de leads par métier : Couverture, Solaire, Chauffage, Climatisation, Bornes de recharge."
+>
+  <div class="py-16 lg:py-24 relative overflow-hidden bg-[#FBF9F6]/50 font-sans">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_100%,#000_70%,transparent_100%)] pointer-events-none z-0"></div>
+    
+    <div class="container mx-auto max-w-6xl px-6 relative z-10">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center space-x-2 text-xs text-text-secondary mb-8">
+        <a href="/" class="hover:text-slate-900 transition-colors">Accueil</a>
+        <span>/</span>
+        <span class="text-primary-neon font-semibold">Solutions</span>
+      </nav>
+
+      <!-- Page Header -->
+      <div class="max-w-3xl mb-16 lg:mb-20 space-y-4">
+        <span class="font-mono text-[10px] font-bold text-[#9A784E] uppercase tracking-wider bg-[#9A784E]/5 border border-[#9A784E]/10 px-3 py-1 rounded-full">
+          Recherche & Référencement Local
+        </span>
+        <h1 class="font-heading text-4xl font-normal text-slate-900 sm:text-5xl leading-tight">
+          Nos solutions d'acquisition exclusives <span class="gradient-text-editorial">par thématique métier</span>
+        </h1>
+        <p class="text-sm text-text-secondary leading-relaxed max-w-2xl">
+          Nous positionnons des sites d'acquisition ultra-spécifiques sur les requêtes à forte intention d'achat de vos futurs clients. Choisissez votre niche et monopolisez votre secteur.
+        </p>
+      </div>
+
+      <!-- Solutions Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        {solutions.map(s => {
+          const IconComponent = s.icon;
+          const targetUrl = s.hasPage ? `/solutions/${s.slug}` : `/candidature`;
+          
+          return (
+            <div class="glass-card-neon rounded-3xl border border-slate-200/60 p-6 lg:p-8 flex flex-col justify-between hover:shadow-lg transition-all duration-300 group">
+              <div class="space-y-6">
+                <!-- Icon and Title -->
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center space-x-4">
+                    <div class="h-12 w-12 rounded-2xl bg-primary-neon/5 border border-primary-neon/10 flex items-center justify-center text-primary-neon">
+                      <IconComponent class="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h3 class="font-heading text-lg font-bold text-slate-900 leading-tight">{s.title}</h3>
+                      <span class="text-[9px] font-mono text-text-secondary uppercase tracking-wider block mt-0.5">Secteurs actifs</span>
+                    </div>
+                  </div>
+                  
+                  {!s.hasPage && (
+                    <span class="bg-[#9A784E]/5 border border-[#9A784E]/15 px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold text-[#9A784E] uppercase tracking-wider">
+                      Candidature Libre
+                    </span>
+                  )}
+                </div>
+
+                <!-- Description -->
+                <p class="text-xs text-text-secondary leading-relaxed">
+                  {s.description}
+                </p>
+
+                <!-- Key stats -->
+                <div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-100">
+                  <div>
+                    <span class="text-[9px] font-mono text-text-secondary uppercase tracking-wider">Volume Moyen</span>
+                    <span class="block text-sm font-mono font-bold text-slate-900 mt-1">{s.stats.volume}</span>
+                  </div>
+                  <div>
+                    <span class="text-[9px] font-mono text-text-secondary uppercase tracking-wider">Signature Constatée</span>
+                    <span class="block text-sm font-mono font-bold text-emerald-600 mt-1">{s.stats.sign}</span>
+                  </div>
+                </div>
+
+                <!-- Target Keywords / SEO focus -->
+                <div class="space-y-2 pt-4 border-t border-slate-100/60">
+                  <span class="text-[9px] font-mono text-text-secondary uppercase tracking-wider block">Exemples de requêtes Google captées :</span>
+                  <div class="flex flex-wrap gap-1.5">
+                    {s.keywords.map(kw => (
+                      <span class="text-[10px] font-mono bg-slate-50 border border-slate-200/50 text-slate-800 px-2 py-0.5 rounded-md italic">
+                        "{kw}"
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action button -->
+              <div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between">
+                <span class="text-[10px] font-mono text-text-secondary uppercase tracking-wider">Exclusivité territoriale</span>
+                <a 
+                  href={targetUrl} 
+                  class="inline-flex h-9 items-center justify-center rounded-lg bg-primary-neon hover:bg-primary-neon/90 text-[11px] font-bold text-white px-4 transition-all duration-150"
+                >
+                  {s.hasPage ? "Consulter la solution" : "Réserver ce secteur"} 
+                  <ArrowRight class="ml-1.5 h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </a>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEO / Strategic Maillage Section -->
+  <section class="py-20 bg-white font-sans border-t border-slate-100">
+    <div class="container mx-auto max-w-4xl px-6">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+        <div class="md:col-span-7 space-y-6">
+          <h2 class="font-heading text-2xl font-normal text-slate-900 leading-tight">Pourquoi cibler une thématique spécifique en exclusivité ?</h2>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Contrairement aux annuaires généralistes ou aux comparateurs de prix classiques, les sites de notre réseau Wade Studio sont thématisés pour un seul métier et optimisés pour le référencement local. Un prospect recherchant un <strong>installateur de climatisation</strong> ou un <strong>électricien certifié IRVE</strong> tombe sur notre portail dédié et est immédiatement redirigé vers vous.
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-start space-x-2.5 text-xs text-text-secondary">
+              <CheckCircle2 class="h-4.5 w-4.5 text-emerald-600 shrink-0 mt-0.5" />
+              <span><strong>Zéro dilution de trafic :</strong> 100% de l'audience locale est orientée vers un seul partenaire.</span>
+            </div>
+            <div class="flex items-start space-x-2.5 text-xs text-text-secondary">
+              <CheckCircle2 class="h-4.5 w-4.5 text-emerald-600 shrink-0 mt-0.5" />
+              <span><strong>Sémantique d'autorité :</strong> Google privilégie nos sites ultra-spécifiques face aux annuaires fourre-tout.</span>
+            </div>
+          </div>
+        </div>
+        <div class="md:col-span-5 bg-[#FBF9F6]/60 border border-slate-200/60 p-6 rounded-2xl">
+          <h3 class="font-heading text-base font-bold text-slate-900 mb-3">Statistiques Globales</h3>
+          <ul class="space-y-3.5 text-xs text-text-secondary">
+            <li class="flex justify-between border-b border-slate-200 pb-2">
+              <span>Niches couvertes</span>
+              <strong class="font-mono text-slate-900">8 thématiques</strong>
+            </li>
+            <li class="flex justify-between border-b border-slate-200 pb-2">
+              <span>Leads qualifiés / mois</span>
+              <strong class="font-mono text-slate-900">+1 400</strong>
+            </li>
+            <li class="flex justify-between">
+              <span>Taux de conversion moyen</span>
+              <strong class="font-mono text-emerald-600">49.5%</strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-[#FBF9F6]/50 border-t border-slate-100 font-sans">
+    <div class="container mx-auto max-w-3xl px-6 text-center">
+      <h3 class="font-heading text-2xl font-normal text-slate-900">Vérifiez si l'exclusivité de votre niche est libre</h3>
+      <p class="font-sans text-xs text-text-secondary mt-2">Nous n'acceptons qu'un seul artisan par métier et par département pour garantir l'efficacité de notre canal.</p>
+      <div class="mt-8">
+        <a href="/candidature" class="inline-flex h-12 items-center justify-center rounded-xl bg-primary-neon hover:bg-primary-neon/90 hover:scale-[1.01] active:scale-[0.99] px-6 text-sm font-bold text-white transition-all duration-200 shadow-md">
+          Tester mon éligibilité maintenant <ArrowRight class="ml-2 h-4 w-4" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

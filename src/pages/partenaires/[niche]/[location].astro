@@ -1,0 +1,325 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Footer from '../../../components/Footer.astro';
+import { departments } from '../../../data/departments.js';
+import { niches } from '../../../data/niches.js';
+import { 
+  ShieldCheck, 
+  ArrowRight, 
+  Lock, 
+  CheckCircle2, 
+  TrendingUp, 
+  MapPin, 
+  Briefcase, 
+  BarChart3, 
+  Users, 
+  ChevronRight 
+} from '@lucide/astro';
+
+// Generate all static paths for 8 niches * 96 departments
+export function getStaticPaths() {
+  const paths = [];
+  for (const niche of niches) {
+    for (const dept of departments) {
+      paths.push({
+        params: {
+          niche: niche.slug,
+          location: dept.slug
+        },
+        props: {
+          niche,
+          dept
+        }
+      });
+    }
+  }
+  return paths;
+}
+
+const { niche, dept } = Astro.props;
+
+// Calculate customized metrics
+const estimatedLeads = Math.round(niche.baseLeads * dept.density);
+const cpl = niche.averageCpl;
+const conversionRate = 0.15; // 15% standard signing rate
+const estSigning = Math.round(estimatedLeads * conversionRate) || 1;
+const estRevenue = estSigning * niche.averageProjectValue;
+
+// Find neighboring departments for horizontal linking
+const neighborDepts = departments.filter(d => dept.neighbors.includes(d.code));
+// Find other niches for vertical linking
+const otherNiches = niches.filter(n => n.slug !== niche.slug);
+---
+
+<Layout 
+  title={`Achat de Leads ${niche.label} Exclusifs en ${dept.name} (${dept.code}) - Wade Studio`} 
+  description={`Trouvez des chantiers de ${niche.label.toLowerCase()} en ${dept.name}. Devenez l'unique partenaire RGE à ${dept.prefecture} et obtenez le monopole.`}
+>
+  <!-- Breadcrumbs -->
+  <div class="bg-[#FBF9F6] border-b border-slate-100 py-3.5 font-sans">
+    <div class="container mx-auto max-w-7xl px-6">
+      <div class="flex items-center space-x-2 text-[10px] font-mono text-text-secondary uppercase tracking-wider">
+        <a href="/" class="hover:text-slate-900 transition-colors">Accueil</a>
+        <ChevronRight class="h-3 w-3" />
+        <a href="/partenaires" class="hover:text-slate-900 transition-colors">Recrutement Partenaires</a>
+        <ChevronRight class="h-3 w-3" />
+        <span class="text-slate-900 font-bold">{niche.label} ({dept.code})</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero / Proposition de Valeur Locale -->
+  <section class="py-16 lg:py-24 relative overflow-hidden bg-[#FBF9F6]/80 font-sans border-b border-slate-100">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.01)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_100%,#000_70%,transparent_100%)] pointer-events-none z-0"></div>
+    
+    <div class="container mx-auto max-w-5xl px-6 relative z-10">
+      <div class="text-center space-y-6">
+        <span class="inline-flex items-center space-x-1.5 font-mono text-[10px] font-bold text-primary-neon uppercase tracking-wider bg-primary-neon/5 border border-primary-neon/10 px-3 py-1 rounded-full">
+          <MapPin class="h-3.5 w-3.5" />
+          <span>Exclusivité Territoriale - {dept.name} ({dept.code})</span>
+        </span>
+        
+        <h1 class="font-heading text-4xl font-normal text-slate-900 sm:text-5xl lg:text-6xl max-w-4xl mx-auto leading-tight">
+          Devenez l'unique partenaire <span class="gradient-text-editorial">{niche.label}</span> à {dept.prefecture} et alentours
+        </h1>
+        
+        <p class="font-sans text-sm md:text-base text-text-secondary leading-relaxed max-w-2xl mx-auto">
+          Wade Studio déploie son réseau d'acquisition de leads de chantiers en {dept.name} ({dept.code}). Ne perdez plus votre temps à courir après des fiches clients revendues à 5 concurrents. Obtenez le monopole.
+        </p>
+
+        <!-- Dynamic Action Button pre-filling niche and department -->
+        <div class="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
+          <a 
+            href={`/candidature?niche=${niche.slug}&dept=${dept.code}`} 
+            class="inline-flex h-12 items-center justify-center rounded-xl bg-primary-neon px-8 text-sm font-bold text-white shadow-lg shadow-[#0B3C2E]/15 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200"
+          >
+            Bloquer l'exclusivité en {dept.name}
+            <ArrowRight class="ml-2 h-4 w-4" />
+          </a>
+          <span class="text-[10px] font-mono text-text-secondary flex items-center space-x-1"><Lock class="h-3.5 w-3.5 text-[#9A784E]" /><span>1 seul {niche.artisanLabel} par département</span></span>
+        </div>
+      </div>
+
+      <!-- Local Market Metrics Widget -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-16 lg:mt-20">
+        <!-- Lead volume card -->
+        <div class="bg-white border border-slate-200/60 p-6 rounded-2xl shadow-sm text-center relative overflow-hidden group">
+          <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary-neon to-[#9A784E]"></div>
+          <span class="text-[10px] font-mono text-text-secondary uppercase tracking-wider font-semibold block">Flux de demandes estimé</span>
+          <strong class="font-heading text-3xl font-normal text-slate-900 block mt-2">~{estimatedLeads} / mois</strong>
+          <p class="text-xs text-text-secondary mt-2">Leads qualifiés récoltés sur nos portails SEO locaux en {dept.name}.</p>
+        </div>
+
+        <!-- POTENTIAL REVENUE card -->
+        <div class="bg-white border border-slate-200/60 p-6 rounded-2xl shadow-sm text-center relative overflow-hidden group">
+          <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#9A784E] to-[#0B3C2E]"></div>
+          <span class="text-[10px] font-mono text-text-secondary uppercase tracking-wider font-semibold block">CA Potentiel Mensuel</span>
+          <strong class="font-heading text-3xl font-normal text-slate-900 block mt-2">+{estRevenue.toLocaleString('fr-FR')} €</strong>
+          <p class="text-xs text-text-secondary mt-2">Estimé sur un panier moyen de {niche.averageProjectValue.toLocaleString('fr-FR')} € et 15% de signature.</p>
+        </div>
+
+        <!-- CPL pricing card -->
+        <div class="bg-white border border-slate-200/60 p-6 rounded-2xl shadow-sm text-center relative overflow-hidden group">
+          <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#0B3C2E] to-primary-neon"></div>
+          <span class="text-[10px] font-mono text-text-secondary uppercase tracking-wider font-semibold block">Tarif indicatif au Lead (CPL)</span>
+          <strong class="font-heading text-3xl font-normal text-slate-900 block mt-2">{cpl}</strong>
+          <p class="text-xs text-text-secondary mt-2">Facturé à l'unité en phase 1. Possibilité de forfait mensuel fixe en phase 2.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Local ROI Simulator -->
+  <section class="py-20 bg-white font-sans border-b border-slate-100">
+    <div class="container mx-auto max-w-4xl px-6">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="font-mono text-[10px] text-[#9A784E] uppercase tracking-wider font-bold">Outil d'estimation</span>
+        <h2 class="font-heading text-3xl font-normal text-slate-900 mt-3">Simulateur de retour sur investissement local</h2>
+        <p class="text-xs text-text-secondary mt-2">Simulez vos gains commerciaux potentiels en {dept.name} en ajustant les curseurs ci-dessous.</p>
+      </div>
+
+      <div class="bg-[#FBF9F6]/50 border border-slate-200/60 rounded-3xl p-6 lg:p-10 shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <!-- Inputs / Sliders -->
+          <div class="space-y-6">
+            <!-- Leads count slider -->
+            <div class="space-y-2">
+              <div class="flex justify-between text-xs font-semibold text-slate-700">
+                <span>Leads reçus par mois :</span>
+                <span class="font-mono text-primary-neon font-bold" id="leads-val">{estimatedLeads}</span>
+              </div>
+              <input 
+                type="range" 
+                id="leads-slider" 
+                min="5" 
+                max={Math.max(100, estimatedLeads * 2)} 
+                value={estimatedLeads}
+                class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#0B3C2E]"
+              />
+            </div>
+
+            <!-- Conversion slider -->
+            <div class="space-y-2">
+              <div class="flex justify-between text-xs font-semibold text-slate-700">
+                <span>Votre taux de signature (ventes) :</span>
+                <span class="font-mono text-primary-neon font-bold" id="conv-val">15%</span>
+              </div>
+              <input 
+                type="range" 
+                id="conv-slider" 
+                min="5" 
+                max="40" 
+                value="15" 
+                class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#0B3C2E]"
+              />
+            </div>
+
+            <!-- Avg ticket value slider -->
+            <div class="space-y-2">
+              <div class="flex justify-between text-xs font-semibold text-slate-700">
+                <span>Panier moyen par chantier :</span>
+                <span class="font-mono text-primary-neon font-bold" id="ticket-val">{niche.averageProjectValue.toLocaleString('fr-FR')} €</span>
+              </div>
+              <input 
+                type="range" 
+                id="ticket-slider" 
+                min={Math.round(niche.averageProjectValue * 0.5)} 
+                max={niche.averageProjectValue * 2} 
+                step="500"
+                value={niche.averageProjectValue} 
+                class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#0B3C2E]"
+              />
+            </div>
+          </div>
+
+          <!-- Output Box -->
+          <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-inner text-center space-y-4">
+            <span class="text-[9px] font-mono text-text-secondary uppercase tracking-wider font-semibold">Chiffre d'Affaires Brut Estimé</span>
+            <div class="font-heading text-4xl font-normal text-slate-900" id="ca-result">
+              {estRevenue.toLocaleString('fr-FR')} €
+            </div>
+            <div class="h-[1px] w-full bg-slate-100 my-2"></div>
+            <div class="flex justify-between text-[11px] text-text-secondary font-mono px-4">
+              <span>Nombre de chantiers signés :</span>
+              <span class="text-slate-900 font-bold" id="chantiers-result">{estSigning} / mois</span>
+            </div>
+            <p class="text-[10px] text-text-secondary leading-normal px-2">
+              Calculé à titre indicatif. Pour une estimation précise des volumes et des marges selon votre entreprise, contactez notre équipe.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B2B local FAQ section (SEO focused) -->
+  <section class="py-20 bg-slate-50 font-sans border-b border-slate-100">
+    <div class="container mx-auto max-w-3xl px-6">
+      <h2 class="font-heading text-2xl font-normal text-slate-900 text-center mb-12">Questions fréquentes - Partenariat {niche.label} en {dept.name}</h2>
+      
+      <div class="space-y-6">
+        <div class="bg-white border border-slate-200/60 p-5 rounded-xl">
+          <h3 class="font-heading text-sm font-bold text-slate-900">Comment garantissez-vous l'exclusivité en {dept.name} ?</h3>
+          <p class="text-xs text-text-secondary mt-2">
+            Notre contrat de partenariat stipule noir sur blanc que Wade Studio s'interdit d'envoyer la moindre fiche prospect ou lead de {niche.label.toLowerCase()} à un concurrent sur le territoire du département {dept.name} ({dept.code}) durant la validité de l'accord.
+          </p>
+        </div>
+        
+        <div class="bg-white border border-slate-200/60 p-5 rounded-xl">
+          <h3 class="font-heading text-sm font-bold text-slate-900">D'où provient le trafic et comment les fiches sont-elles qualifiées ?</h3>
+          <p class="text-xs text-text-secondary mt-2">
+            Nous gérons un réseau de portails SEO informatifs à forte visibilité locale à {dept.prefecture} et dans les communes de {dept.name}. Les prospects remplissent des formulaires de demande de devis détaillés où nous validons leur intérêt, leur zone géographique, ainsi que les caractéristiques de leur projet de {niche.label.toLowerCase()}.
+          </p>
+        </div>
+
+        <div class="bg-white border border-slate-200/60 p-5 rounded-xl">
+          <h3 class="font-heading text-sm font-bold text-slate-900">Quelle est la différence entre la formulae au Lead et la formule Rank & Rent ?</h3>
+          <p class="text-xs text-text-secondary mt-2">
+            La formule au lead (CPL) vous permet de démarrer en toute sécurité en payant à l'unité chaque prospect qualifié livré. La formule Rank & Rent (location forfaitaire) vous permet de payer un loyer fixe par mois pour capter 100% des leads du site sans surcoût, ce qui maximise votre rentabilité commerciale dès que le volume augmente.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programmatic Interlinking (Cocon Sémantique Local) -->
+  <section class="py-20 bg-white font-sans">
+    <div class="container mx-auto max-w-5xl px-6 space-y-12">
+      
+      <!-- Horizontal linking (Same niche, neighboring departments) -->
+      <div class="space-y-4">
+        <h3 class="font-heading text-lg font-bold text-slate-900">Leads {niche.label} dans les départements limitrophes</h3>
+        <p class="text-xs text-text-secondary">Nous couvrons également les secteurs proches pour élargir votre zone d'intervention :</p>
+        <div class="flex flex-wrap gap-2.5 pt-2">
+          {neighborDepts.map(neighbor => (
+            <a 
+              href={`/partenaires/${niche.slug}/${neighbor.slug}`}
+              class="inline-flex items-center text-xs bg-slate-50 border border-slate-200 hover:border-[#0B3C2E] hover:bg-slate-100 hover:text-[#0B3C2E] px-3.5 py-1.5 rounded-lg text-text-secondary transition-colors"
+            >
+              Leads {niche.label} - {neighbor.name} ({neighbor.code})
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-slate-200"></div>
+
+      <!-- Vertical linking (Other niches, same department) -->
+      <div class="space-y-4">
+        <h3 class="font-heading text-lg font-bold text-slate-900">Autres opportunités d'exclusivité en {dept.name} ({dept.code})</h3>
+        <p class="text-xs text-text-secondary">Découvrez d'autres thématiques d'acquisition disponibles sur votre département :</p>
+        <div class="flex flex-wrap gap-2.5 pt-2">
+          {otherNiches.map(other => (
+            <a 
+              href={`/partenaires/${other.slug}/${dept.slug}`}
+              class="inline-flex items-center text-xs bg-slate-50 border border-slate-200 hover:border-[#9A784E] hover:bg-slate-100 hover:text-[#9A784E] px-3.5 py-1.5 rounded-lg text-text-secondary transition-colors"
+            >
+              Opportunité {other.label} en {dept.name}
+            </a>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Client-side script for local ROI simulator calculations -->
+  <script define:vars={{ initialAverageProjectValue: niche.averageProjectValue, initialLeads: estimatedLeads }}>
+    const leadsSlider = document.getElementById('leads-slider');
+    const convSlider = document.getElementById('conv-slider');
+    const ticketSlider = document.getElementById('ticket-slider');
+
+    const leadsVal = document.getElementById('leads-val');
+    const convVal = document.getElementById('conv-val');
+    const ticketVal = document.getElementById('ticket-val');
+
+    const caResult = document.getElementById('ca-result');
+    const chantiersResult = document.getElementById('chantiers-result');
+
+    function calculate() {
+      const leads = parseInt(leadsSlider.value);
+      const conv = parseInt(convSlider.value);
+      const ticket = parseInt(ticketSlider.value);
+
+      leadsVal.textContent = leads;
+      convVal.textContent = conv + '%';
+      ticketVal.textContent = ticket.toLocaleString('fr-FR') + ' €';
+
+      const signed = Math.round(leads * (conv / 100)) || 1;
+      const ca = signed * ticket;
+
+      chantiersResult.textContent = signed + ' / mois';
+      caResult.textContent = ca.toLocaleString('fr-FR') + ' €';
+    }
+
+    if (leadsSlider && convSlider && ticketSlider) {
+      leadsSlider.addEventListener('input', calculate);
+      convSlider.addEventListener('input', calculate);
+      ticketSlider.addEventListener('input', calculate);
+    }
+  </script>
+
+  <!-- Footer -->
+  <Footer />
+</Layout>
