@@ -92,13 +92,10 @@ export const POST: APIRoute = async ({ request }) => {
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 
     // Attempt to save to a local JSON file (local dev environment only)
-    try {
-      // Check if we are running in Node environment
-      if (typeof process !== 'undefined' && process.versions && process.versions.node) {
-        const fsModule = 'node:fs';
-        const pathModule = 'node:path';
-        const fs = await import(fsModule) as any;
-        const path = await import(pathModule) as any;
+    if (import.meta.env.DEV) {
+      try {
+        const fs = await import('node:fs');
+        const path = await import('node:path');
         
         const dataDir = path.resolve('./src/data');
         if (!fs.existsSync(dataDir)) {
@@ -120,10 +117,9 @@ export const POST: APIRoute = async ({ request }) => {
         currentLeads.push(leadData);
         fs.writeFileSync(filePath, JSON.stringify(currentLeads, null, 2), 'utf-8');
         console.log(`[Local DB] Lead details appended to: ${filePath}`);
+      } catch (fsErr) {
+        console.error('Failed to write lead to local database:', fsErr);
       }
-    } catch (fsErr) {
-      // Non-blocking fallback when running in serverless / read-only edge environment
-      console.log('[Serverless Output] Filesystem is read-only. Lead details printed to logs only.');
     }
 
     return new Response(JSON.stringify({ success: true, leadId: leadData.id }), {
