@@ -95,8 +95,10 @@ export const POST: APIRoute = async ({ request }) => {
     try {
       // Check if we are running in Node environment
       if (typeof process !== 'undefined' && process.versions && process.versions.node) {
-        const fs = await import('node:fs');
-        const path = await import('node:path');
+        const fsModule = 'node:fs';
+        const pathModule = 'node:path';
+        const fs = await import(fsModule) as any;
+        const path = await import(pathModule) as any;
         
         const dataDir = path.resolve('./src/data');
         if (!fs.existsSync(dataDir)) {
