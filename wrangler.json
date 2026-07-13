@@ -1,0 +1,11 @@
+{
+  "name": "wade-studio-agency",
+  "compatibility_date": "2026-04-15",
+  "compatibility_flags": [],
+  "kv_namespaces": [
+    {
+      "binding": "SESSION",
+      "id": "placeholder"
+    }
+  ]
+}
