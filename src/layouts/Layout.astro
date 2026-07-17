@@ -93,20 +93,110 @@ const {
 					<a href="/#case-studies" class="font-sans text-xs uppercase tracking-wider font-bold text-text-secondary hover:text-slate-950 transition-colors duration-200 hover:shadow-sm">Résultats</a>
 				</nav>
 
-				<!-- CTA -->
-				<div class="flex items-center space-x-4">
-					<a href="/candidature" class="inline-flex h-11 items-center justify-center rounded-xl bg-primary-neon px-6 text-sm font-bold text-white shadow-lg shadow-[#0B3C2E]/15 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200">
+				<!-- CTA & Hamburger -->
+				<div class="flex items-center space-x-3.5">
+					<a href="/candidature" class="hidden sm:inline-flex h-11 items-center justify-center rounded-xl bg-primary-neon px-5 text-sm font-bold text-white shadow-lg shadow-[#0B3C2E]/15 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200">
 						Tester mon éligibilité
 					</a>
+					
+					<!-- Hamburger Button (visible on mobile only) -->
+					<button id="mobile-menu-toggle" class="md:hidden flex items-center justify-center p-2 rounded-xl text-text-secondary hover:text-slate-950 focus:outline-none cursor-pointer" aria-label="Ouvrir le menu">
+						<svg class="h-6.5 w-6.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+						</svg>
+					</button>
 				</div>
 			</div>
 			<!-- Thin gradient border -->
 			<div class="h-[1px] w-full bg-gradient-to-r from-[#0B3C2E]/10 via-[#9A784E]/20 to-[#0B3C2E]/10"></div>
 		</header>
 
+		<!-- Mobile Menu Drawer -->
+		<div id="mobile-menu" class="fixed inset-0 z-[100] md:hidden bg-slate-950/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+			<div class="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-white p-6 shadow-2xl flex flex-col justify-between translate-x-full transition-transform duration-300 ease-out" id="mobile-menu-container">
+				<div>
+					<!-- Header -->
+					<div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+						<img src="/images/wade_studio_logo.png" alt="Wade Studio Logo" class="h-8 w-auto" />
+						<button id="mobile-menu-close" class="p-1 rounded-lg text-text-secondary hover:text-slate-950 cursor-pointer" aria-label="Fermer le menu">
+							<svg class="h-6.5 w-6.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+							</svg>
+						</button>
+					</div>
+
+					<!-- Links -->
+					<nav class="flex flex-col space-y-4 font-sans">
+						<a href="/methode" class="text-sm font-bold text-text-secondary hover:text-slate-950 py-2 border-b border-slate-50 transition-colors">Notre Méthode</a>
+						<a href="/solutions" class="text-sm font-bold text-text-secondary hover:text-slate-950 py-2 border-b border-slate-50 transition-colors">Nos Solutions (8 niches)</a>
+						<a href="/partenaires" class="text-sm font-bold text-[#0B3C2E] hover:text-slate-950 py-2 border-b border-slate-50 transition-colors flex items-center space-x-2">
+							<span class="relative flex h-2 w-2">
+								<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-neon opacity-75"></span>
+								<span class="relative inline-flex rounded-full h-2 w-2 bg-primary-neon"></span>
+							</span>
+							<span>Zones Disponibles</span>
+						</a>
+						<a href="/#roi-simulator" class="text-sm font-bold text-text-secondary hover:text-slate-950 py-2 border-b border-slate-50 transition-colors">Simulateur ROI</a>
+						<a href="/#case-studies" class="text-sm font-bold text-text-secondary hover:text-slate-950 py-2 border-b border-slate-50 transition-colors">Nos Résultats</a>
+						<a href="/blog" class="text-sm font-bold text-text-secondary hover:text-slate-950 py-2 border-b border-slate-50 transition-colors">Blog B2B</a>
+					</nav>
+				</div>
+
+				<!-- CTA bottom of menu -->
+				<div class="pt-6 border-t border-slate-100">
+					<a href="/candidature" class="flex h-12 w-full items-center justify-center rounded-xl bg-primary-neon text-sm font-bold text-white shadow-md">
+						Tester mon éligibilité
+					</a>
+				</div>
+			</div>
+		</div>
+
 		<!-- Main Content Slot -->
 		<main class="relative z-10">
 			<slot />
 		</main>
+
+		<script>
+			function setupMobileMenu() {
+				const toggleBtn = document.getElementById('mobile-menu-toggle');
+				const closeBtn = document.getElementById('mobile-menu-close');
+				const menu = document.getElementById('mobile-menu');
+				const menuContainer = document.getElementById('mobile-menu-container');
+				const menuLinks = menu?.querySelectorAll('nav a, div a');
+
+				function openMenu() {
+					if (menu && menuContainer) {
+						menu.classList.remove('opacity-0', 'pointer-events-none');
+						menu.classList.add('opacity-100', 'pointer-events-auto');
+						menuContainer.classList.remove('translate-x-full');
+						menuContainer.classList.add('translate-x-0');
+						document.body.style.overflow = 'hidden';
+					}
+				}
+
+				function closeMenu() {
+					if (menu && menuContainer) {
+						menu.classList.remove('opacity-100', 'pointer-events-auto');
+						menu.classList.add('opacity-0', 'pointer-events-none');
+						menuContainer.classList.remove('translate-x-0');
+						menuContainer.classList.add('translate-x-full');
+						document.body.style.overflow = '';
+					}
+				}
+
+				toggleBtn?.addEventListener('click', openMenu);
+				closeBtn?.addEventListener('click', closeMenu);
+				menu?.addEventListener('click', (e) => {
+					if (e.target === menu) closeMenu();
+				});
+
+				menuLinks?.forEach(link => {
+					link.addEventListener('click', closeMenu);
+				});
+			}
+
+			setupMobileMenu();
+			document.addEventListener('astro:page-load', setupMobileMenu);
+		</script>
 	</body>
 </html>

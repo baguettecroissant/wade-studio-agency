@@ -3,31 +3,17 @@
 import { ShieldCheck, Play } from '@lucide/astro';
 ---
 
-<section class="relative overflow-hidden py-24 lg:py-36 bg-[#FBF9F6]/30">
+<section class="relative overflow-hidden pt-10 pb-20 lg:pt-14 lg:pb-32 bg-[#FBF9F6]/30">
   <!-- Subtle Editorial Background Grid -->
   <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] pointer-events-none z-0"></div>
 
-  <!-- Dynamic floating sticker illustrations around the centered B2B content -->
-  <!-- Top Left: Horseshoe Magnet -->
-  <div class="absolute top-10 left-[2%] sm:left-[6%] md:left-[10%] w-24 sm:w-32 md:w-44 rotate-[-12deg] z-20 animate-float-slow select-none pointer-events-none filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.06)]">
-    <img src="/images/sticker_magnet.png" alt="Sticker Aimant de Leads" class="w-full h-auto" />
-  </div>
 
-  <!-- Top Right: Bullseye Target -->
-  <div class="absolute top-16 right-[2%] sm:right-[6%] md:right-[10%] w-24 sm:w-32 md:w-44 rotate-[15deg] z-20 animate-float-medium select-none pointer-events-none filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.06)]">
-    <img src="/images/sticker_target.png" alt="Sticker Cible Prospects" class="w-full h-auto" />
-  </div>
 
-  <!-- Bottom Left: Growth Chart -->
-  <div class="absolute bottom-6 left-[4%] sm:left-[8%] md:left-[12%] w-24 sm:w-32 md:w-44 rotate-[-8deg] z-20 animate-float-fast select-none pointer-events-none filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.06)]">
-    <img src="/images/sticker_growth.png" alt="Sticker Graphique de Vente" class="w-full h-auto" />
-  </div>
-
-  <div class="container mx-auto max-w-4xl px-6 relative z-10 text-center flex flex-col items-center space-y-8 mt-4">
+  <div class="container mx-auto max-w-4xl px-6 relative z-10 text-center flex flex-col items-center space-y-6 mt-1">
     <!-- Badge -->
     <div class="inline-flex items-center space-x-2 rounded-full border border-primary-neon/15 bg-primary-neon/5 px-3.5 py-1.5 backdrop-blur-sm">
       <ShieldCheck class="h-4.5 w-4.5 text-primary-neon" />
-      <span class="font-mono text-[10px] font-bold text-primary-neon uppercase tracking-widest">B2B Exclusivité Totale</span>
+      <span class="font-mono text-[10px] font-bold text-primary-neon uppercase tracking-widest">Exclusivité Totale Artisans</span>
     </div>
     
     <!-- Main Hook -->
@@ -71,7 +57,7 @@ import { ShieldCheck, Play } from '@lucide/astro';
     <div class="pt-10 border-t border-slate-200 grid grid-cols-3 gap-8 w-full max-w-2xl mx-auto mt-8">
       <div>
         <span class="block font-heading text-3xl font-bold tracking-tight leading-none text-primary-neon" id="hero-count-leads">1,438</span>
-        <span class="text-xs text-text-secondary mt-1.5 block">Leads distribués ce mois</span>
+        <span class="text-xs text-text-secondary mt-1.5 block">Chantiers distribués ce mois</span>
       </div>
       <div>
         <span class="block font-heading text-3xl font-bold tracking-tight leading-none text-accent-violet">0%</span>
